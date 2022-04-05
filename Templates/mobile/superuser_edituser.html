@@ -1,0 +1,54 @@
+{% extends 'mobile/superuser_base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="home-content" id="home-content">
+    <div class="form-container" id="form-container">
+        <h1>Edit User</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="pfp-container" id="pfp-container">
+                <div class="wrapper" id="pfp-wrapper">
+                    <div class="pfp-image" id="pfp-image">
+                        <img src="{{user.profile_pic.url}}" alt="" id="pfp-photo">
+                    </div>
+                </div>
+            </div>
+            <input type="file" id="default-btn" name="profile_picture" accept=".png,.jpg,.jpeg" hidden>
+            <div class="upload-btn-container" id="upload-btn-container">
+                <button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose image</button>
+            </div>
+            <div class="form-field" id="form-field">
+                {{ form.first_name.errors }}
+                {{ form.first_name }}
+                <span></span>
+                <label>First Name</label>
+            </div>
+            <div class="form-field" id="form-field">
+                {{ form.middle_name.errors }}
+                {{ form.middle_name }}
+                <span></span>
+                <label>Middle Name</label>
+            </div>
+            <div class="form-field" id="form-field">
+                {{ form.last_name.errors }}
+                {{ form.last_name }}
+                <span></span>
+                <label>Last Name</label>
+            </div>
+            <div class="form-field" id="form-field">
+                {{ form.email_address.errors }}
+                {{ form.email_address }}
+                <span></span>
+                <label>Email Address</label>
+            </div>
+            <div class="submit-container" id="submit-container">
+                <button type='submit' class= 'submit-button' id="submit-button">Save</button>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="{% static 'js/selected1.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mobile/button.js' %}"></script>
+</div>
+{% endblock %}

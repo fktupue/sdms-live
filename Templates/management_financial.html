@@ -1,0 +1,111 @@
+{% extends 'management_navbar.html' %}
+
+{% block content %}
+
+<div class="financial-container">
+    <div class="row">
+        <div class="col-5 justify-content-center">
+            <h1>Financial Report</h1>
+        </div>
+        <div class="col-2 justify-content-center">
+            <!-- <div class="row">
+                <div class="col-2 justify-content-center">
+                    <i class="fa-solid fa-angle-left"></i>
+                </div>
+                <div class="col-8 justify-content-center">
+                    <h2>Month Year</h2>
+                </div>
+                <div class="col-2 justify-content-center">
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
+            </div> -->
+        </div>
+        <div class="col-2 justify-content-center">
+
+        </div>
+        <div class="col-3 justify-content-center">
+            
+        </div>
+    </div>
+
+    <div class="financial-report-container">
+        <div class="row">
+            <div class="col-3 justify-content-center" id="report-col1">
+                <div class="trips">
+                    <h3>Total Trips: {{total_trips}}</h3>
+                    <h4>In Progress: {{active_trips}}</h4>
+                    <h4>Completed: {{completed_trips}}</h4>
+                </div>
+                <div class="bags">
+                    <h3>Total Bags: {{total_bags}}</h3>
+                    <h4>In Progress: {{active_bags}}</h4>
+                    <h4>Completed: {{completed_bags}}</h4>
+                </div>
+                <div class="receivables">
+                    <h3>Total Receivables </h3>
+                    <h4>Php {{total_receivables}} </h4>
+                </div>
+            </div>
+            <div class="col-9 justify-content-center" id="column2">
+                <div class="row">
+                    <div class="col-6 justify-content-center" id="report-col2">
+                        <div class="header">
+                            <h3>Client Breakdown</h3>
+                        </div>
+                        <div class="col2-wrapper" id="col2-wrapper">
+                            {% for c in client_data %}
+                            <div class="company-financial" id="comp-fin">
+                                <div class="row">
+                                    <div class="col-8 justify-content-center">
+                                        <h3>{{c.client.company_name}}</h3>
+                                    </div>
+                                    <div class="col-4 justify-content-center">
+                                        <button type='button' class= 'indiv-report-btn' id="rep-btn" onclick="location.href='{% url 'SDMS:management-generatefinancialreport' c.client.id %}'"> Download Report </button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 justify-content-center" id="comp-fin-col">
+                                        <h4>Total Trips: {{ c.trip_inprogress|add:c.trip_completed }}</h4>
+                                        <h5>In Progress: {{c.trip_inprogress}}</h5>
+                                        <h5>Completed: {{c.trip_completed}}</h5>
+                                    </div>
+                                    <div class="col-6 justify-content-center" id="comp-fin-col2">
+                                        <h4>Total Bags: {{c.bag_count}}</h4>
+                                        <h4>Total Receivables: </h4>
+                                        <h5>Php {{ c.base_rate|add:c.rate_adjust }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-6 justify-content-center" id="report-col3">
+                        <div class="header">
+                            <h3>Driver Breakdown</h3>
+                        </div>
+                        {% for i in driver_data %}
+                        <div class="company-financial" id="driver-fin">
+                            <div class="row">
+                                <div class="col-4 justify-content-center">
+                                    <div class="prof-pic-wrapper">
+                                        <img src="{{i.driver.profile_pic.url}}">
+                                    </div>
+                                </div>
+                                <div class="col-8 justify-content-center">
+                                    <h3>{{i.driver.first_name}} {{i.driver.last_name}}</h3>
+                                    <h4>Total Trips: {{i.trip_count}}</h4>
+                                    <h4>Total Bags: {{i.bag_count}}</h4>
+                                    <span><h5>Driver Basic: {{i.driver_basic}}</h5></span>
+                                    <h4>Driver Additional: {{i.driver_additional}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

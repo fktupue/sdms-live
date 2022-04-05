@@ -1,0 +1,75 @@
+{% extends 'mobile/staff_base.html' %}
+{% block content %}
+{% load static %}
+<div class="home-content" id="home-content">
+    <div class="form-container" id="form-container">
+        <h1>Ref No. {{trip.ref_num}}</h1>
+        <p>Petsa: {{trip.trip_date}}</p>
+        <p>Account: {{trip.farm.company}}</p>
+        <p>Farm: {{trip.farm}}</p>
+        <p>Bilang ng Bag: {{trip.bag_count}}</p>
+        <p>Driver: {{trip.truck.driver}} | Basic: {{trip.driver_basic}}</p>
+        <p>Helper 1: {{trip.helper_1}} | Basic: {{trip.helper1_basic}}</p>
+        <p>Helper 2: {{trip.helper_2}} | Basic: {{trip.helper2_basic}}</p>
+        <p>Helper 3: {{trip.helper_3}} | Basic: {{trip.helper3_basic}}</p>
+        <div class="edit-trip-container" id="edit-trip-container">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="select-box-form" id="select-box-form">
+                    <div class="options-container" id="options-container">
+                        {{ form.trip_status.errors }}
+                        {% for f in form.trip_status %}
+                        <div class="option" id="option">
+                            {{ f.tag }}
+                            <label for="{{ f.id_for_label }}">{{ f.choice_label }}</label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="selected" id="selected">
+                        <div class="row">
+                            <div class="col-10 justify-content-center" id="select-label">
+                                {{trip_status}}
+                            </div>
+                            <div class="col-2 justify-content-center" id="select-icon-container">
+                                <i class='bx bx-chevron-down' ></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="select-box-form" id="select-box-form">
+                    <div class="options-container-2" id="options-container">
+                        {{ form.payment_status.errors }}
+                        {% for f in form.payment_status %}
+                        <div class="option-2" id="option">
+                            {{ f.tag }}
+                            <label for="{{ f.id_for_label }}">{{ f.choice_label }}</label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="selected-2" id="selected">
+                        <div class="row">
+                            <div class="col-10 justify-content-center" id="select-label">
+                                {{payment_status}}
+                            </div>
+                            <div class="col-2 justify-content-center" id="select-icon-container">
+                                <i class='bx bx-chevron-down' ></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-field" id="form-field">
+                    {{ form.driver_additional.errors }}
+                    {{ form.driver_additional }}
+                    <span></span>
+                    <label>Driver Additional</label>
+                </div>
+                <div class="submit-container" id="submit-container">
+                    <button type='submit' class= 'submit-button' id="submit-button">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'js/selected2.js' %}"></script>
+</div>
+{% endblock %}

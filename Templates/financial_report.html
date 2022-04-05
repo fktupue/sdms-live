@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Financial Report</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="icon" href="{% static 'img/SDMS_Logo.png' %}">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+            @page{
+                size: a4 portrait;
+                margin: 2.5cm 2.5cm 2.5cm 2.5cm;
+            }
+            html{
+                font-family: 'Poppins', sans-serif;
+            }
+            #header h2{
+                font-size: 13px;
+                font-weight: 800;
+                margin-top: 0;
+                margin-bottom: 0;
+                line-height: 50%;
+                color: #548235;
+            }
+            #header p{
+                margin-top: 0;
+                margin-bottom: 0;
+                font-size: 8px;
+                line-height: 2%;
+            }
+            #title{
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+            #title h1{
+                text-align: center;
+                font-size: 15px;
+                font-weight: 900;
+            }
+            #client-info{
+                width: 100%;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                border-top: 1px solid black;
+                border-bottom: 1px solid black;
+            }
+            #client-info h3{
+                font-size: 11px;
+            }
+            #div-spacer{
+                margin-top: 50px;
+                opacity: 0;
+                color: white;
+            }
+            #trips-table{
+                width: 100%;
+                border: 1px solid black;
+            }
+            #trips-header{
+                text-align: center;
+                background: #D9D9D9;
+            }
+            #trips-header tr{
+                padding-top: 2px;
+                padding-bottom: 2px;
+                font-size: 10px;
+            }
+            #ref-num{
+                width: 14.5%;
+            }
+            #trip-date{
+                width: 14.5%;
+            }
+            #farm{
+                width: 30%;
+            }
+            #rate-code{
+                width: 10%;
+            }
+            #bags{
+                width: 10%;
+            }
+            #base-rate{
+                width: 10.5%;
+            }
+            #adjustment{
+                width: 10.5%;
+            }
+            #trips-body{
+                text-align: center;
+                font-size: 10px;
+            }
+            #trips-body tr{
+                padding-top: 1px;
+                padding-bottom: 1px;
+            }
+            #trips-body tr td{
+                page-break-before: auto;
+                page-break-inside: avoid !important;
+            }
+            #total-due{
+                margin-top: 7px;
+            }
+            #spacer{
+                width: 69%;
+            }
+            #total{
+                width: 31%;
+                font-size: 12px;
+            }
+            #signatures-container h3{
+                font-size: 11px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="report-wrapper" id="report-wrapper">
+            <div class="header" id="header">
+                <h2>Safedrive Trucking Services Corporation</h2>
+                <p>Address: Brgy. Payapa, Padre Garcia, Batangas</p>
+                <p>Telephone No: (043) 277 0737</p>
+                <p>Email: safedrive.corp@gmail.com</p>
+            </div>
+            <div class="title" id="title">
+                <h1>Financial Report - {{month}} {{year}}</h1>
+            </div>
+            <div class="client-info" id="client-info">
+                <h3>Client: {{client_name}}<br>
+                    Address: {{client_address}}<br>
+                    Email: {{client_email}}
+                </h3>
+            </div>
+            <div class="div-spacer" id="div-spacer" hidden>-</div>
+            <div class="trips-table-container" id="trips-table-container">
+                <table class = "trips-table" id="trips-table">
+                    <thead class= "trips-header" id="trips-header">
+                        <tr>
+                            <th id="ref-num">Ref No.</th>
+                            <th id="trip-date">Trip Date</th>
+                            <th id="farm">Farm</th>
+                            <th id="rate-code">Rate Code</th>
+                            <th id="bags">Bags</th>
+                            <th id="base-rate">Base Rate</th>
+                            <th id="adjustment">Adjustment</th>
+                        </tr>
+                    </thead>
+                    <tbody class= "trips-body" id="trips-body">
+                        {% for t in client_trips %}
+                        <tr>
+                            <td id="table-body">{{t.ref_num}}</td>
+                            <td id="table-body">{{t.trip_date|date:'Y-m-d'}}</td>
+                            <td id="table-body">{{t.farm.farm_name}}</td>
+                            <td id="table-body">{{t.farm.rate_code}}</td>
+                            <td id="table-body">{{t.bag_count}}</td>
+                            <td id="table-body">{{t.base_rate}}</td>
+                            <td id="table-body">{{t.rate_adjustment}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <table class = "total-due" id="total-due">
+                    <thead class= "total-header" id="total-header">
+                        <tr>
+                            <th id="spacer"></th>
+                            <th id="total">Total Due: {{total_due}}</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="div-spacer" id="div-spacer" hidden>-</div>
+            <div class="signatures-container" id="signatures-container">
+                <h3>Approved by:</h3>
+                <h3>Date:</h3>
+            </div>
+        </div>
+    </body>
+</html>

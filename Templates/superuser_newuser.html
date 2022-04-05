@@ -1,0 +1,125 @@
+{% extends 'superuser_navbar.html' %}
+
+{% block content %}
+{% load static %}
+<div class="form-container">
+    <h1>New User</h1>
+    <form method="POST" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-3 justify-content-center">
+                <h2 id="pfp-cont-lbl">Profile Picture</h2>
+                <div class="pfp-container">
+                    <div class="wrapper">
+                        <div class="pfp-image">
+                            <img src="{% static 'img/user-default.png' %}" alt="" id="pfp-photo">
+                        </div>
+                        <div id="cancel-btn"><i class="fas fa-times"></i></div>
+                        <div class="file-name">File name here</div>
+                    </div>
+                </div>
+                <input type="file" id="default-btn" name="profile_picture" accept=".png,.jpg,.jpeg" hidden>
+                <button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose image</button>
+            </div>
+
+            <div class="col-9 justify-content-center">
+                <div class="form_field">
+                    <input type="text" name="first_name" value="" maxlength="50" required>
+                    <span></span>
+                    <label>First Name</label>
+                </div>
+                <div class="form_field">
+                    <input type="text" name="middle_name" value="" maxlength="50" required>
+                    <span></span>
+                    <label>Middle Name</label>
+                </div>
+                <div class="form_field">
+                    <input type="text" name="last_name" value="" maxlength="50" required>
+                    <span></span>
+                    <label>Last Name</label>
+                </div>
+                <div class="row">
+                    <div class="col-6 justify-content-center">
+                        <div class="select-box-form">
+                            <div class="options-container">
+                                <div class="option">
+                                    <input type="radio" class="radio" id="Admin" name="user-role" value="Admin">
+                                    <label for="Admin">Admin</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" class="radio" id="Management" name="user-role" value="Management">
+                                    <label for="Management">Management</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" class="radio" id="Staff" name="user-role" value="Staff">
+                                    <label for="Staff">Staff</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" class="radio" id="Driver" name="user-role" value="Driver">
+                                    <label for="Driver">Driver</label>
+                                </div>
+                            </div>
+            
+                            <div class="selected">
+                                Select Role
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 justify-content-center">
+                        <div class="form_field">
+                            <input type="text" name="contact_number" value="" maxlength="15" required>
+                            <span></span>
+                            <label>Contact Number</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 justify-content-center">
+                        <div class="form_field">
+                            <input type="text" name="email_address" value="" maxlength="50" required>
+                            <span></span>
+                            <label>Email Address (N/A if none)</label>
+                        </div>
+                    </div>
+                    <div class="col-6 justify-content-center">
+                        <div class="form_field">
+                            <input type="text" name="username" value="" required>
+                            <span></span>
+                            <label>Username</label>
+                        </div>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-6 justify-content-center">
+                        <div class="form_field">
+                            <input type="password" name="password1" value="" required>
+                            <span></span>
+                            <label>Password</label>
+                        </div>
+                    </div>
+                    <div class="col-6 justify-content-center">
+                        <div class="form_field">
+                            <input type="password" name="password2" value="" required>
+                            <span></span>
+                            <label> Confirm Password</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6 justify-content-center">
+                    <button type='submit' class= 'submitForm'> Save </button>
+                </div>
+                <div class="col-6 justify-content-center">
+                    <div class="btn-cont">
+                        <a class="cancelForm" href="{% url 'SDMS:superuser-users' %}"> Cancel </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="{% static 'js/selected1.js' %}"></script>  
+</div>
+
+{% endblock %}

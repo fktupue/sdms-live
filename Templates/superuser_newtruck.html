@@ -1,0 +1,79 @@
+{% extends 'superuser_navbar.html' %}
+
+{% block content %}
+{% load static %}
+<div class="form-container">
+    <h1>{{screen}}</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="form_field">
+            {{ form.plate_number.errors }}
+            {{ form.plate_number }}
+            <span></span>
+            <label>Plate Number</label>
+        </div>
+        <div class="row">
+            <div class="col-6 justify-content-center">
+                <div class="select-box-form">
+                    <div class="options-container">
+                        {{ form.truck_classification.errors }}
+                        {% for choice in form.truck_classification %}
+                        <div class="option">
+                            {{ choice.tag }}
+                            <label for="{{ choice.id_for_label }}">{{ choice.choice_label }}</label>
+                        </div>
+                        {% endfor %}
+                    </div>
+    
+                    <div class="selected">
+                        {{category}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 justify-content-center">
+                <div class="select-box-form">
+                    <div class="options-container-2">
+                        {{ form.driver.errors }}
+                        {% for item in form.driver %}
+                        <div class="option-2">
+                            {{ item.tag }}
+                            <label for="{{ item.id_for_label }}">{{ item.choice_label }}</label>
+                        </div>
+                        {% endfor %}
+                    </div>
+    
+                    <div class="selected-2">
+                        {{driver}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="select-box-form">
+            <div class="options-container-3">
+                {{ form.company.errors }}
+                {% for item in form.company %}
+                <div class="option-3">
+                    {{ item.tag }}
+                    <label for="{{ item.id_for_label }}">{{ item.choice_label }}</label>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="selected-3">
+                {{company}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 justify-content-center">
+                <button type='submit' class= 'submitForm'>Save</button>
+            </div>
+            <div class="col-6 justify-content-center">
+                <div class="btn-cont">
+                    <a class="cancelForm" href="{% url 'SDMS:superuser-truckdata' %}"> Cancel </a>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="{% static 'js/selected3.js' %}"></script>   
+</div>
+{% endblock %}

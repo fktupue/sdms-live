@@ -1,0 +1,90 @@
+{% extends 'management_navbar.html' %}
+
+{% block content %}
+{% load static %}
+<div class="row">
+    <div class="col-2 justify-content-center">
+        <div class="home-container-1">
+            <h1>{{unpaid_trips}}</h1>
+            <h4>unpaid trips</h4>
+        </div>
+        <div class="home-container-1">
+            <h1>{{active_trips}}</h1>
+            <h4>active trips</h4>
+        </div>
+    </div>
+    <div class="col-10 justify-content-center">
+        <div class="calendar disable-selection">
+            <div class="calendar-wrapper" id="calendar-wrapper">
+                <!-- <div class="row">
+                    <div class="col-6 justify-content-center">
+                        <div class="calendar-left">
+                            <div class="text-left calendar-change-year" id="change-year">
+                                <div class="calendar-change-year-slider" id="change-year-slider">
+                                    <span class="fa fa-chevron-left cursor-pointer calendar-change-year-slider-prev"></span>
+                                    <span class="calendar-current-year">2022</span>
+                                    <span class="fa fa-chevron-right cursor-pointer calendar-change-year-slider-next"></span>
+                                </div>
+                            </div>
+                            <div class="calendar-month-list">
+                                <ul class="calendar-month" id="calendar-month">
+                                    <li>Jan</li>
+                                </ul>
+                            </div>
+                            <div class="calendar-week-list">
+                                <ul class="calendar-week" id="calendar-week">
+                                    <li>Sun</li>
+                                </ul>
+                            </div>
+                            <div class="calendar-day-list">
+                                <ul class="calendar-day" id="calendar-day">
+                                    <li data-day="01"></li>
+                                    <li data-day="02"></li>
+                                    <li data-day="03"></li>
+                                    <li data-day="04"></li>
+                                    <li data-day="05"></li>
+                                    <li data-day="06"></li>
+                                    <li data-day="07"></li>
+                                    <li data-day="08"></li>
+                                    <li data-day="09"></li>
+                                    <li data-day="10"></li>
+                                    <li data-day="11"></li>
+                                    <li data-day="12"></li>
+                                    <li data-day="13"></li>
+                                    <li data-day="14"></li>
+                                    <li data-day="15"></li>
+                                    <li data-day="16"></li>
+                                    <li data-day="17"></li>
+                                    <li data-day="18"></li>
+                                    <li data-day="19"></li>
+                                    <li data-day="20"></li>
+                                    <li data-day="21"></li>
+                                    <li data-day="22"></li>
+                                    <li data-day="23"></li>
+                                    <li data-day="24"></li>
+                                    <li data-day="25"></li>
+                                    <li data-day="26"></li>
+                                    <li data-day="27"></li>
+                                    <li data-day="28"></li>
+                                    <li data-day="29"></li>
+                                    <li data-day="30"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 justify-content-center">
+                        <div class="calendar-right" id="calendar-right">
+                            <div class="right-label" id="right-label">
+                                <h1>Trips for today</h1>
+                                <div class="calendar-event-container" id="calendar-event-container">
+                                    sdsdsd
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

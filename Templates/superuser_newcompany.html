@@ -1,0 +1,80 @@
+{% extends 'superuser_navbar.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="form-container">
+    <h1>{{screen}}</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="form_field">
+            {{ form.company_name.errors }}
+            {{ form.company_name }}
+            <span></span>
+            <label>Company Name</label>
+        </div>
+        <div class="row">
+            <div class="col-6 justify-content-center">
+                <div class="form_field">
+                    {{ form.address_line_1.errors }}
+                    {{ form.address_line_1 }}
+                    <span></span>
+                    <label>Address Line 1</label>
+                </div>
+            </div>
+            <div class="col-6 justify-content-center">
+                <div class="form_field">
+                    {{ form.address_line_2.errors }}
+                    {{ form.address_line_2 }}
+                    <span></span>
+                    <label>Address Line 2 (N/A if none)</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 justify-content-center">
+                <div class="form_field">
+                    {{ form.city.errors }}
+                    {{ form.city }}
+                    <span></span>
+                    <label>City</label>
+                </div>
+            </div>
+            <div class="col-4 justify-content-center">
+                <div class="form_field">
+                    {{ form.province.errors }}
+                    {{ form.province }}
+                    <span></span>
+                    <label>Province</label>
+                </div>
+            </div>
+            <div class="col-4 justify-content-center">
+                <div class="form_field">
+                    {{ form.zip_code.errors }}
+                    {{ form.zip_code }}
+                    <span></span>
+                    <label>Zip Code</label>
+                </div>
+            </div>
+        </div>
+        <div class="form_field">
+            {{ form.email_address.errors }}
+            {{ form.email_address }}
+            <span></span>
+            <label>Email Address</label>
+        </div>
+        <div class="row">
+            <div class="col-6 justify-content-center">
+                <button type='submit' class= 'submitForm'> Save </button>
+            </div>
+            <div class="col-6 justify-content-center">
+                <div class="btn-cont">
+                    <a class="cancelForm" href="{% url 'SDMS:superuser-clientdata' %}"> Cancel </a>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="{% static 'js/selected3.js' %}"></script>
+</div>
+{% endblock %}

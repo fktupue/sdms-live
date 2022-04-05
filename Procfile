@@ -1,0 +1,1 @@
+web: gunicorn Safedrive.wsgi --log-file -

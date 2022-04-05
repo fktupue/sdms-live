@@ -1,0 +1,49 @@
+{% extends 'mobile/driver_base.html' %}
+{% block content %}
+{% load static %}
+<div class="home-content" id="home-content">
+    <div class="form-container" id="form-container">
+        <h1>Ref No. {{trip.ref_num}}</h1>
+        <p>Farm: {{trip.farm}}</p>
+        <p>Petsa: {{trip.trip_date}}</p>
+        <p>Bilang ng Bag: {{trip.bag_count}}</p>
+        <div class="edit-trip-container" id="edit-trip-container">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="select-box-form" id="select-box-form">
+                    <div class="options-container" id="options-container">
+                        {{ form.trip_status.errors }}
+                        {% for f in form.trip_status %}
+                        <div class="option" id="option">
+                            {{ f.tag }}
+                            <label for="{{ f.id_for_label }}">{{ f.choice_label }}</label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="selected" id="selected">
+                        <div class="row">
+                            <div class="col-10 justify-content-center" id="select-label">
+                                Status ng Trip
+                            </div>
+                            <div class="col-2 justify-content-center" id="select-icon-container">
+                                <i class='bx bx-chevron-down' ></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-field" id="form-field">
+                    {{ form.additional_expense.errors }}
+                    {{ form.additional_expense }}
+                    <span></span>
+                    <label>Karagdagang Gastos</label>
+                </div>
+                <div class="submit-container" id="submit-container">
+                    <button type='submit' class= 'submit-button' id="submit-button">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'js/selected1.js' %}"></script>
+</div>
+{% endblock %}

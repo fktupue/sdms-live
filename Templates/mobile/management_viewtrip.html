@@ -1,0 +1,42 @@
+{% extends 'mobile/management_base.html' %}
+{% block content %}
+{% load static %}
+<div class="home-content" id="home-content">
+    <div class="form-container" id="form-container">
+        <h1>Ref No. {{trip.ref_num}}</h1>
+        <p>Petsa: {{trip.trip_date}}</p>
+        <p>Account: {{trip.farm.company}}</p>
+        <p>Farm: {{trip.farm}}</p>
+        <p>Bilang ng Bag: {{trip.bag_count}} | Rate Code: {{trip.farm.rate_code}}</p>
+        <p>Base Rate: {{trip.base_rate}}</p>
+        <p>Driver: {{trip.truck.driver}} | Basic: {{trip.driver_basic}}</p>
+        <p>Helper 1: {{trip.helper_1}} | Basic: {{trip.helper1_basic}}</p>
+        <p>Helper 2: {{trip.helper_2}} | Basic: {{trip.helper2_basic}}</p>
+        <p>Helper 3: {{trip.helper_3}} | Basic: {{trip.helper3_basic}}</p>
+        <p>Trip Status: {{trip.trip_status}}</p>
+        <p>Payment Status: {{trip.payment_status}}</p>
+        <div class="edit-trip-container" id="edit-trip-container">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="form-field" id="form-field">
+                    {{ form.rate_adjustment.errors }}
+                    {{ form.rate_adjustment }}
+                    <span></span>
+                    <label>Rate Adjustment</label>
+                </div>
+                <div class="form-field" id="form-field">
+                    {{ form.management_remarks.errors }}
+                    {{ form.management_remarks }}
+                    <span></span>
+                    <label>Remarks</label>
+                </div>
+                <div class="submit-container" id="submit-container">
+                    <button type='submit' class= 'submit-button' id="submit-button">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'js/main2.js' %}"></script>
+</div>
+{% endblock %}

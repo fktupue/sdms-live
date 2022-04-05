@@ -1,0 +1,87 @@
+{% extends 'mobile/superuser_base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="home-content" id="home-content">
+    <div class="form-container" id="form-container">
+        <h1>{{screen}}</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="form-field" id="form-field">
+                {{ form.plate_number.errors }}
+                {{ form.plate_number }}
+                <span></span>
+                <label>Plate Number</label>
+            </div>
+            <div class="select-box-form" id="select-box-form">
+                <div class="options-container" id="options-container">
+                    {{ form.truck_classification.errors }}
+                    {% for f in form.truck_classification %}
+                    <div class="option" id="option">
+                        {{ f.tag }}
+                        <label for="{{ f.id_for_label }}">{{ f.choice_label }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="selected" id="selected">
+                    <div class="row">
+                        <div class="col-10 justify-content-center" id="select-label">
+                            {{category}}
+                        </div>
+                        <div class="col-2 justify-content-center" id="select-icon-container">
+                            <i class='bx bx-chevron-down' ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="select-box-form" id="select-box-form">
+                <div class="options-container-2" id="options-container">
+                    {{ form.driver.errors }}
+                    {% for f in form.driver %}
+                    <div class="option-2" id="option">
+                        {{ f.tag }}
+                        <label for="{{ f.id_for_label }}">{{ f.choice_label }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="selected-2" id="selected">
+                    <div class="row">
+                        <div class="col-10 justify-content-center" id="select-label">
+                            {{driver}}
+                        </div>
+                        <div class="col-2 justify-content-center" id="select-icon-container">
+                            <i class='bx bx-chevron-down' ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="select-box-form" id="select-box-form">
+                <div class="options-container-3" id="options-container">
+                    {{ form.company.errors }}
+                    {% for f in form.company %}
+                    <div class="option-3" id="option">
+                        {{ f.tag }}
+                        <label for="{{ f.id_for_label }}">{{ f.choice_label }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="selected-3" id="selected">
+                    <div class="row">
+                        <div class="col-10 justify-content-center" id="select-label">
+                            {{company}}
+                        </div>
+                        <div class="col-2 justify-content-center" id="select-icon-container">
+                            <i class='bx bx-chevron-down' ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="submit-container" id="submit-container">
+                <button type='submit' class= 'submit-button' id="submit-button">Save</button>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="{% static 'js/selected3.js' %}"></script>
+</div>
+{% endblock %}

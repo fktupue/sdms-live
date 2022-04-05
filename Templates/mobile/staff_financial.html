@@ -1,0 +1,59 @@
+{% extends 'mobile/staff_base.html' %}
+{% block content %}
+{% load static %}
+<div class="home-content" id="home-content">
+    <div class="header" id="header">
+        <h2>Financial Report ({{month}} {{year}})</h2>
+    </div>
+    <div class="financial-overview" id="financial-overview">
+        <div class="financial-trips" id="financial-trips">
+            <h4>Total Trips: {{total_trips}}</h4>
+            <p>In Progress: {{active_trips}}</p>
+            <p>Completed: {{completed_trips}}</p>
+        </div>
+        <div class="financial-bags" id="financial-bags">
+            <h4>Total Bags: {{total_bags}}</h4>
+            <p>In Progress: {{active_bags}}</p>
+            <p>Completed: {{completed_bags}}</p>
+        </div>
+        <div class="bag-count" id="bag-count-home">
+            <h3>{{total_receivables}}</h3>
+            <h4>total receivables</h4>
+        </div>
+    </div>
+    <div class="header" id="header">
+        <h2>Client Breakdown</h2>
+    </div>
+    {% for c in client_data %}
+    <div class="client-breakdown" id="client-breakdown">
+        <h4>{{c.client}}</h4>
+        <p>Total Trips: {{ c.trip_inprogress|add:c.trip_completed }} (Active: {{c.trip_inprogress}})</p>
+        <p>Total Bags: {{c.bag_count}}</p>
+        <p>Receivables: {{ c.base_rate|add:c.rate_adjust }}</p>
+    </div>
+    {% endfor %}
+    <div class="header" id="header">
+        <h2>Driver Breakdown</h2>
+    </div>
+    {% for u in driver_data %}
+    <div class="driver-breakdown" id="driver-breakdown">
+        <div class="row">
+            <div class="col-5 justify-content-center" id="pfp-col">
+                <div class="pfp-wrapper" id="pfp-wrapper">
+                    <img src="{{u.driver.profile_pic.url}}">
+                </div>
+            </div>
+            <div class="col-7 justify-content-center" id="det-col">
+                <div class="details-wrapper">
+                    <h4>{{u.driver}}</h4>
+                    <p>Total Trips: {{u.trip_count}}</p>
+                    <p>Total Bags: {{u.bag_count}}</p>
+                    <p>Driver Basic: {{u.driver_basic}}</p>
+                    <p>Driver Additional: {{u.driver_additional}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

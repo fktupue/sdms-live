@@ -1,0 +1,57 @@
+{% extends 'mobile/superuser_base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="home-content" id="home-content">
+    <div class="header" id="header">
+        <div class="row">
+            <div class="col-8 justify-content-center">
+                <h2>All Trucks</h2>
+            </div>
+            <div class="col-4 justify-content-center" id="add-item-cont">
+                <button type='btn' class= 'new-item' id="new-item" onclick="location.href='{% url 'SDMS:superuser-newtruck' %}'">New +</button>
+            </div>
+        </div>
+        <div class="search-box" id="search-box">
+            <input class="form-control" type="text" id="truckSearch" name="truckSearch" placeholder="Search...">
+        </div>
+        <div class="trip-container" id="trip-container">
+            <div class="trip-init" id="trip-init">
+                {% for t in trucks %}
+                <div class="trip-item" id="trip-item">
+                    <div class="item-wrapper" id="item-wrapper">
+                        <div class="row">
+                            <div class="col-9 justify-content-center">
+                                <h3>{{t.plate_number}}</h3>
+                                <p>Company: {{t.company}}</p>
+                                <p>Driver: {{t.driver}}</p>
+                                <p>Classification: {{t.truck_classification}}</p>
+                                <p>Capacity: {{t.capacity}}</p>
+                            </div>
+                            <div class="col-3 justify-content-center" id="action-cont">
+                                <div class="view-item" id="superuser-view-item">
+                                    <div class="row">
+                                        <div class="col-6 justify-content-center" id="view">
+                                            <a class="btn" href="{% url 'SDMS:superuser-edittruck' t.id %}"><i class='bx bxs-edit'></i></a>
+                                        </div>
+                                        <div class="col-6 justify-content-center" id="delete">
+                                            <a class="btn" href="{% url 'SDMS:truck-delete' t.id %}"><i class='bx bx-trash'></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="trip-container-output" id="trip-container-output">
+                <div class="trip-output" id="trip-output">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'js/mobile/truck_search.js' %}"></script>
+</div>
+{% endblock %}

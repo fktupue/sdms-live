@@ -1,0 +1,98 @@
+{% extends 'management_navbar.html' %}
+
+{% block content %}
+{% load static %}
+<div class="form-container-wide">
+    <h1>Reference No. {{trip.ref_num}}</h1>
+    <div class="row">
+        <div class="col-3 justify-content-center">
+            <h4 id="farm-title">Farm: {{trip.farm}}</h4>
+            <h2 id="farm-ratecode">Rate Code: {{trip.farm.rate_code}}</h2>
+            <div class="details-spacer" id="status-spacer">
+                <h2 id="edittrip-details">Trip Status: {{trip.trip_status}}</h2>
+                <h2 id="edittrip-details">Payment Status: {{trip.payment_status}}</h2>
+            </div>
+            <div class="details-spacer" id="details-spacer">
+                <h2 id="edittrip-details">Date Created: {{trip.create_date|date:'Y-m-d h:i a'}}</h2>
+                <h2 id="edittrip-details">Last Edited: {{trip.last_edit_date|date:'Y-m-d h:i a'}}</h2>
+            </div>
+        </div>
+        <div class="col-9 justify-content-center">
+            <div class="details-cont">
+                <div class="row">
+                    <div class="col-6 justify-content-center">
+                        <h2 id="edittrip-details">Account: {{trip.farm.company}}</h2>
+                    </div>
+                    <div class="col-6 justify-content-center">
+                        <h2 id="edittrip-details">Trip Date: {{trip.trip_date|date:'Y-m-d'}}</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 justify-content-center">
+                        <h2 id="edittrip-details">Truck: {{trip.truck}}</h2>
+                    </div>
+                    <div class="col-5 justify-content-center">
+                        <h2 id="edittrip-details">Driver: {{trip.truck.driver}} | Basic: {{trip.driver_basic}}</h2>
+                    </div>
+                    <div class="col-3 justify-content-center">
+                        <h2 id="edittrip-details">Additional: {{trip.driver_additional}}</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 justify-content-center">
+                        <h2 id="edittrip-details">Helper 1: {{trip.helper_1}} | Basic: {{trip.helper1_basic}}</h2>
+                    </div>
+                    <div class="col-4 justify-content-center">
+                        <h2 id="edittrip-details">Helper 2: {{trip.helper_2}} | Basic: {{trip.helper2_basic}}</h2>
+                    </div>
+                    <div class="col-4 justify-content-center">
+                        <h2 id="edittrip-details">Helper 3: {{trip.helper_3}} | Basic: {{trip.helper3_basic}}</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 justify-content-center">
+                        <h2 id="edittrip-details">Bags Delivered: {{trip.bag_count}}</h2>
+                    </div>
+                    <div class="col-6 justify-content-center">
+                        <h2 id="edittrip-details">Bags over CAP: {{bag_over_cap}}</h2>
+                    </div>
+                </div>
+                <h2 id="edittrip-details">Base Rate: {% widthratio trip.bag_count 1 trip.farm.rate_code %}</h2>
+                
+                
+                <div class="form-spacer" id="form-spacer">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        <div class="form_field">
+                            {{ form.rate_adjustment.errors }}
+                            {{ form.rate_adjustment }}
+                            <span></span>
+                            <label>Rate Adjustment</label>
+                        </div>
+                        <div class="form_field">
+                            {{ form.management_remarks.errors }}
+                            {{ form.management_remarks }}
+                            <span></span>
+                            <label>Remarks</label>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 justify-content-center">
+                                <button type='submit' class= 'submitForm'> Save </button>
+                            </div>
+                            <div class="col-6 justify-content-center">
+                                <div class="btn-cont">
+                                    <a class="cancelForm" href="{% url 'SDMS:management-trips' %}"> Cancel </a>
+                                    <!-- <button type='button' class= 'cancel-trip-btn' onclick="location.href='{% url 'SDMS:management-trips' %}'"> Cancel </button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}

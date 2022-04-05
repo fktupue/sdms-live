@@ -1,0 +1,102 @@
+{% extends 'superuser_navbar.html' %}
+
+{% block content %}
+{% load static %}
+<div id="app" class="row">
+    <div class="col-2 justify-content-center">
+        <div class="home-container-1">
+            <h1>{{online_users}}</h1>
+            <h4>online users</h4>
+        </div>
+        <div class="home-container-1">
+            <h1>{{active_trips}}</h1>
+            <h4>active trips</h4>
+        </div>
+    </div>
+    <div class="col-10 justify-content-center">
+        <div class="home-container-2">
+            <div class="row">
+                <div class="col-3 justify-content-center">
+                    <h1 id="home-cont-lbl">Trips</h1>
+                </div>
+                <div class="col-4 justify-content-center">
+                    <div class="form-group">
+                        <div class="search-box-trips">
+                            <input class="form-control" type="text" id="tripSearch" name="tripSearch" placeholder="Search...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="app-table" id="trip-init">
+                <table class = "trip-table">
+                    <thead class= "trip-header">
+                        <tr>
+                            <th>Ref No.</th>
+                            <th>Farm</th>
+                            <th>Truck</th>
+                            <th>Driver</th>
+                            <th>Bags Delivered</th>
+                            <th>Trip Date</th>
+                            <th>Trip Status</th>
+                            <th>Payment Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="trip-body">
+                        {% for t in trips %}
+                        <tr>
+                            <td id="table-body" data-heading="Ref No.">{{t.ref_num}}</td>
+                            <td id="table-body" data-heading="Farm">{{t.farm}}</td>
+                            <td id="table-body" data-heading="Truck">{{t.truck}}</td>
+                            <td id="table-body" data-heading="Driver">{{t.truck.driver}}</td>
+                            <td id="table-body" data-heading="Bags Delivered">{{t.bag_count}}</td>
+                            <td id="table-body" data-heading="Trip Date">{{t.trip_date|date:'Y-m-d'}}</td>
+                            <td id="table-body" data-heading="Trip Status">{{t.trip_status}}</td>
+                            <td id="table-body" data-heading="Payment Status">{{t.payment_status}}</td>
+                            <td id="table-body" data-heading="Action">
+                                <div class="row" id="superuser-trip-action">
+                                    <div class="col-6 justify-content-center">
+                                        <div class="trip-view-item">
+                                            <a class="btn" href="{% url 'SDMS:superuser-edittrip' t.id %}"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 justify-content-center">
+                                        <div class="trip-delete-item">
+                                            <a class="btn" href="{% url 'SDMS:superuser-deletetrip' t.id %}"><i class="fa-solid fa-trash-can"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="trip-table-output" id="trip-table-output">
+                <table class = "trip-table">
+                    <thead class= "trip-header">
+                        <tr>
+                            <th>Ref No.</th>
+                            <th>Farm</th>
+                            <th>Truck</th>
+                            <th>Driver</th>
+                            <th>Bags Delivered</th>
+                            <th>Trip Date</th>
+                            <th>Trip Status</th>
+                            <th>Payment Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="trip-body" id="trip-body">
+                        
+                    </tbody>
+                </table>
+                <div class="table-error-msg" id="table-error">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="{% static 'js/superuser_trip_search.js' %}"></script>
+{% endblock %}

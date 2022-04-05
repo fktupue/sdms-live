@@ -1,0 +1,72 @@
+{% extends 'mobile/superuser_base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="home-content" id="home-content">
+    <div class="trip-info" id="trip-info">
+        <div class="header" id="header">
+            <h2>Overview</h2>
+        </div>
+        <div class="trip count" id="trip-count">
+            <div class="row">
+                <div class="col-6 justify-content-center">
+                    <div class="completed-trips" id="completed-trips">
+                        <h3>{{online_users}}</h3>
+                        <h4>online users</h4>
+                    </div>
+                </div>
+                <div class="col-6 justify-content-center">
+                    <div class="active-trips" id="active-trips">
+                        <h3>{{active_trips}}</h3>
+                        <h4>active trips</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="trip-info" id="trip-info">
+        <div class="header" id="header">
+            <h2>All Trips</h2>
+        </div>
+        <div class="search-box" id="search-box">
+            <input class="form-control" type="text" id="tripSearch" name="tripSearch" placeholder="Search...">
+        </div>
+        <div class="trip-container" id="trip-container">
+            <div class="trip-init" id="trip-init">
+                {% for t in trips %}
+                <div class="trip-item" id="trip-item">
+                    <div class="item-wrapper" id="item-wrapper">
+                        <div class="row">
+                            <div class="col-9 justify-content-center">
+                                <h3>{{t.ref_num}}</h3>
+                                <p>Farm: {{t.farm}}</p>
+                                <p>Trip Date: {{t.trip_date|date:'Y-m-d'}}</p>
+                                <p>Bag Count: {{t.bag_count}}</p>
+                            </div>
+                            <div class="col-3 justify-content-center" id="superuser-action-cont">
+                                <div class="view-item" id="superuser-view-item">
+                                    <div class="row">
+                                        <div class="col-6 justify-content-center" id="view">
+                                            <a class="btn" href="{% url 'SDMS:superuser-edittrip' t.id %}"><i class='bx bxs-edit'></i></a>
+                                        </div>
+                                        <div class="col-6 justify-content-center" id="delete">
+                                            <a class="btn" href="{% url 'SDMS:superuser-deletetrip' t.id %}"><i class='bx bx-trash'></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="trip-container-output" id="trip-container-output">
+                <div class="trip-output" id="trip-output">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'js/mobile/trip_search_superuser.js' %}"></script>
+</div>
+{% endblock %}

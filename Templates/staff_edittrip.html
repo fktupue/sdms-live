@@ -1,0 +1,116 @@
+{% extends 'staff_navbar.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="form-container-wide">
+    <h1>Reference No. {{trip.ref_num}}</h1>
+    <div class="details-cont">
+        <div class="row">
+            <div class="col-5 justify-content-center">
+                <h2 id="edittrip-details">Account: {{trip.farm.company}}</h2>
+            </div>
+            <div class="col-5 justify-content-center">
+                <h4 id="farm-title">Farm: {{trip.farm}}</h4>
+            </div>
+            <div class="col-2 justify-content-center">
+                <h4 id="farm-title">Rate Code: {{trip.farm.rate_code}}</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 justify-content-center">
+                <h2 id="edittrip-details">Trip Date: {{trip.trip_date}}</h2>
+            </div>
+            <div class="col-4 justify-content-center">
+                <h2 id="edittrip-details">Truck: {{trip.truck}}</h2>
+            </div>
+            <div class="col-4 justify-content-center">
+                <h2 id="edittrip-details">Driver: {{trip.truck.driver}} | Basic: {{trip.driver_basic}}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 justify-content-center">
+                <h2 id="edittrip-details">Helper 1: {{trip.helper_1}} | Basic: {{trip.helper1_basic}}</h2>
+            </div>
+            <div class="col-4 justify-content-center">
+                <h2 id="edittrip-details">Helper 2: {{trip.helper_2}} | Basic: {{trip.helper2_basic}}</h2>
+            </div>
+            <div class="col-4 justify-content-center">
+                <h2 id="edittrip-details">Helper 3: {{trip.helper_3}} | Basic: {{trip.helper3_basic}}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 justify-content-center">
+                <h2 id="edittrip-details">Bags Delivered: {{trip.bag_count}}</h2>
+            </div>
+            <div class="col-4 justify-content-center">
+                <h2 id="edittrip-details">Bags over CAP: {{excess}}</h2>
+            </div>
+        </div>
+    </div>
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        
+        <div class="edit-form-cont" id="edit-form-cont">
+            <div class="row">
+                <div class="col-4 justify-content-center">
+                    <div class="select-box-form">
+                        <div class="options-container">
+                            {{ form.trip_status.errors }}
+                            {% for status in form.trip_status %}
+                            <div class="option">
+                                {{ status.tag }}
+                                <label for="{{ status.id_for_label }}">{{ status.choice_label }}</label>
+                            </div>
+                            {% endfor %}
+                        </div>
+        
+                        <div class="selected">
+                            {{trip_status}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 justify-content-center">
+                    <div class="select-box-form">
+                        <div class="options-container-2">
+                            {{ form.payment_status.errors }}
+                            {% for status in form.payment_status %}
+                            <div class="option-2">
+                                {{ status.tag }}
+                                <label for="{{ status.id_for_label }}">{{ status.choice_label }}</label>
+                            </div>
+                            {% endfor %}
+                        </div>
+        
+                        <div class="selected-2">
+                            {{payment_status}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 justify-content-center">
+                    <div class="form_field">
+                        {{ form.driver_additional.errors }}
+                        {{ form.driver_additional }}
+                        <span></span>
+                        <label>Driver Additional</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 justify-content-center">
+                    <button type='submit' class= 'submitForm'> Save </button>
+                </div>
+                <div class="col-6 justify-content-center">
+                    <div class="btn-cont">
+                        <a class="cancelForm" href="{% url 'SDMS:staff-trips' %}"> Cancel </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="{% static 'js/selected2.js' %}"></script>
+</div>
+
+{% endblock %}

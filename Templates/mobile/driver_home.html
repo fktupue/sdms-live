@@ -1,0 +1,32 @@
+{% extends 'mobile/driver_base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="home-content" id="home-content">
+    <div class="trip-info" id="trip-info">
+        <div class="header" id="header">
+            <h2>Week Overview</h2>
+        </div>
+        <div class="trip count" id="trip-count">
+            <div class="row">
+                <div class="col-6 justify-content-center">
+                    <div class="active-trips" id="active-trips">
+                        <h3>{{active_mobile}}</h3>
+                        <h4>active trips</h4>
+                    </div>
+                </div>
+                <div class="col-6 justify-content-center">
+                    <div class="completed-trips" id="completed-trips">
+                        <h3>{{completed_mobile}}</h3>
+                        <h4>completed trips</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="bag-count" id="bag-count-home">
+                <h3>{{bag_total}}</h3>
+                <h4>total bags</h4>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

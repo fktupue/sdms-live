@@ -1,0 +1,56 @@
+{% extends 'mobile/superuser_base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="home-content" id="home-content">
+    <div class="header" id="header">
+        <div class="row">
+            <div class="col-8 justify-content-center">
+                <h2>All Users</h2>
+            </div>
+            <div class="col-4 justify-content-center" id="add-item-cont">
+                <button type='btn' class= 'new-item' id="new-item" onclick="location.href='{% url 'SDMS:superuser-newuser' %}'">New +</button>
+            </div>
+        </div>
+        <div class="search-box" id="search-box">
+            <input class="form-control" type="text" id="userSearch" name="userSearch" placeholder="Search...">
+        </div>
+        <div class="trip-container" id="trip-container">
+            <div class="trip-init" id="trip-init">
+                {% for u in users %}
+                <div class="trip-item" id="trip-item">
+                    <div class="item-wrapper" id="item-wrapper">
+                        <div class="row">
+                            <div class="col-9 justify-content-center">
+                                <h3>{{u.first_name}} {{u.last_name}}</h3>
+                                <p>Account Role: {{u.user.groups.all.0}}</p>
+                                <p>Contact Number: {{u.contact_number}}</p>
+                                <p>Email Address: {{u.email_address}}</p>
+                            </div>
+                            <div class="col-3 justify-content-center" id="action-cont">
+                                <div class="view-item" id="superuser-view-item">
+                                    <div class="row">
+                                        <div class="col-6 justify-content-center" id="view">
+                                            <a class="btn" href="{% url 'SDMS:edit-user' u.id %}"><i class='bx bxs-edit'></i></a>
+                                        </div>
+                                        <div class="col-6 justify-content-center" id="delete">
+                                            <a class="btn" href="{% url 'SDMS:delete-user' u.id %}"><i class='bx bx-trash'></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="trip-container-output" id="trip-container-output">
+                <div class="trip-output" id="trip-output">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'js/mobile/user_search.js' %}"></script>
+</div>
+{% endblock %}

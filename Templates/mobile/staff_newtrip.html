@@ -1,0 +1,89 @@
+{% extends 'mobile/staff_base.html' %}
+{% block content %}
+{% load static %}
+<div class="home-content" id="home-content">
+    <div class="form-container" id="form-container">
+        <h1>Bagong Trip</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="select-box-form" id="select-box-form">
+                <div class="options-container" id="options-container">
+                    {{ form.farm.errors }}
+                    {% for f in form.farm %}
+                    <div class="option" id="option">
+                        {{ f.tag }}
+                        <label for="{{ f.id_for_label }}">{{ f.choice_label }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="selected" id="selected">
+                    <div class="row">
+                        <div class="col-10 justify-content-center" id="select-label">
+                            Pumili ng Farm
+                        </div>
+                        <div class="col-2 justify-content-center" id="select-icon-container">
+                            <i class='bx bx-chevron-down' ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="select-box-form" id="select-box-form">
+                <div class="options-container-2" id="options-container">
+                    {{ form.truck.errors }}
+                    {% for f in form.truck %}
+                    <div class="option-2" id="option">
+                        {{ f.tag }}
+                        <label for="{{ f.id_for_label }}">{{ f.choice_label }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="selected-2" id="selected">
+                    <div class="row">
+                        <div class="col-10 justify-content-center" id="select-label">
+                            Pumili ng Truck
+                        </div>
+                        <div class="col-2 justify-content-center" id="select-icon-container">
+                            <i class='bx bx-chevron-down' ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="date-field">
+                {{ form.trip_date.errors }}
+                {{ form.trip_date }}
+                <span></span>
+                <label>Petsa</label>
+            </div>
+            <div class="form-field" id="form-field">
+                {{ form.bag_count.errors }}
+                {{ form.bag_count }}
+                <span></span>
+                <label>Bilang ng Bag</label>
+            </div>
+            <div class="form-field" id="form-field">
+                {{ form.helper_1.errors }}
+                {{ form.helper_1 }}
+                <span></span>
+                <label>Helper 1 (N/A kung wala)</label>
+            </div>
+            <div class="form-field" id="form-field">
+                {{ form.helper_2.errors }}
+                {{ form.helper_2 }}
+                <span></span>
+                <label>Helper 2 (N/A kung wala)</label>
+            </div>
+            <div class="form-field" id="form-field">
+                {{ form.helper_3.errors }}
+                {{ form.helper_3 }}
+                <span></span>
+                <label>Helper 3 (N/A kung wala)</label>
+            </div>
+            <div class="submit-container" id="submit-container">
+                <button type='submit' class= 'submit-button' id="submit-button">Save</button>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="{% static 'js/selected2.js' %}"></script>
+</div>
+{% endblock %}

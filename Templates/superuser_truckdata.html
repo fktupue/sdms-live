@@ -1,0 +1,68 @@
+{% extends 'superuser_navbar.html' %}
+
+{% block content %}
+{% load static %}
+<div id="app" class="row">
+    <div class="col-8 justify-content-center">
+        <div class="form-group">
+            <div class="search-box-users">
+                <input class="form-control" type="text" id="truckSearch" name="truckSearch" placeholder="Search...">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-8 justify-content-center">
+        <div class="item-container" id="item-container">
+            {% for truck in trucks %}
+                <div class="item-v2">
+                    <div class="row">
+                        <div class="col-4 justify-content-center">
+                            <h1 id="plate-number-label">{{ truck.plate_number }}</h1>
+                        </div>
+                        <div class="col-6 justify-content-center" id="truck-data-cont">
+                            <div class="row">
+                                <div class="col-5 justify-content-center">
+                                    <h3>Classification: {{ truck.truck_classification }}</h3>
+                                    <h2>Capacity: {{ truck.capacity }}</h2>
+                                </div>
+                                <div class="col-7 justify-content-center">
+                                    <h3>Company: {{ truck.company }}</h3>
+                                    <h2>Driver: {{truck.driver}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2 justify-content-center">
+                            <div class="row" id="truck-action-cont">
+                                <div class="col-6 justify-content-center">
+                                    <div class="view-item">
+                                        <a class="btn" href="{% url 'SDMS:superuser-edittruck' truck.id %}"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    </div>
+                                </div>
+                                <div class="col-6 justify-content-center">
+                                    <div class="delete-item">
+                                        <a class="btn" href="{% url 'SDMS:truck-delete' truck.id %}"><i class="fa-solid fa-trash-can"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>        
+                </div>
+            {% endfor %}
+        </div>
+        <div class="item-container-body" id="item-container-output">
+            <div class="item-container" id="item-body">
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-1 justify-content-end">
+    </div>
+    <div class="col-3 justify-content-end">
+        <div class="newbtncnt" href="#">
+            <button type='button' class= 'new-button-container' onclick="location.href='{% url 'SDMS:superuser-newtruck' %}'"> New <i class="fas fa-plus"></i> </button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="{% static 'js/truck_search.js' %}"></script>
+{% endblock %}

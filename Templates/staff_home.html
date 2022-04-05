@@ -1,0 +1,22 @@
+{% extends 'staff_navbar.html' %}
+
+{% block content %}
+{% load static %}
+<div class="row">
+    <div class="col-2 justify-content-center">
+        <div class="home-container-1">
+            <h1>{{unpaid_trips}}</h1>
+            <h4>unpaid trips</h4>
+        </div>
+        <div class="home-container-1">
+            <h1>{{active_trips}}</h1>
+            <h4>active trips</h4>
+        </div>
+    </div>
+    <div class="col-10 justify-content-center">
+        <div class="home-container-2">
+
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'superuser_navbar.html' %}
+
+{% block content %}
+{% load static %}
+<div id="app" class="row">
+    <div class="col-8 justify-content-center">
+        <div class="form-group">
+            <div class="search-box-users">
+                <input class="form-control" type="text" id="userSearch" name="userSearch" placeholder="Search...">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-8 justify-content-center">
+        <div class="item-container" id="item-container">
+            <div class="row">
+                {% for user in users %}
+                <div class="col-md-6 justify-content-center">
+                    <div class="user">
+                        <div class="row">
+                            <div class="col-4 justify-content-center">
+                                <div class="prof-pic-wrapper">
+                                    <img src="{{user.profile_pic.url}}">
+                                </div>
+                            </div>
+                            <div class="col-8 justify-content-center">
+                                <div class="row">
+                                    <div class="col-8 justify-content-center">
+                                        <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+                                    </div>
+                                    <div class="col-4 justify-content-center">
+                                        <div class="user-action-cont" id="user-action-cont">
+                                            <div class="viewusercnt" id="view-user-cont" href="#">
+                                                <button type='button' class= 'view-user' onclick="location.href='{% url 'SDMS:edit-user' user.id %}'"><i class="fa-solid fa-pen-to-square"></i></button>
+                                            </div>
+                                            <div class="viewusercnt" href="#">
+                                                <button type='button' class= 'view-user' onclick="location.href='{% url 'SDMS:delete-user' user.id %}'"><i class="fa-solid fa-trash-can"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h2>Account Role: {{ user.user.groups.all.0}}</h2>
+                                <h2>Contact Number: {{ user.contact_number }}</h2>
+                                <h2>Email Address: {{ user.email_address }}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="item-container-body" id="item-container-output">
+            <div class="item-container">
+                <div class="row" id="item-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-1 justify-content-end">
+    </div>
+    <div class="col-3 justify-content-end">
+        <div class="newbtncnt" href="#">
+            <button type='button' class= 'new-button-container' onclick="location.href='{% url 'SDMS:superuser-newuser' %}'"> New <i class="fas fa-plus"></i> </button>
+            <div class="links-container">
+                <a class="act-log" href="{% url 'SDMS:superuser-activitylog' %}">View Activity Log</a>
+                <h2></h2>
+                <a class="forgot-password" href="{% url 'SDMS:superuser-forgotpassword' %}">Forgot Password?</a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'js/user_search.js' %}"></script>
+</div>
+{% endblock %}

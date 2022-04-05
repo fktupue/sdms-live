@@ -1,0 +1,29 @@
+{% extends 'superuser_navbar.html' %}
+
+{% block content %}
+
+<div class="activity-container">
+    <h1>Activity Log</h1>
+    <table class = "activity-table" >
+        <thead class= "activity-header">
+            <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Action</th>
+                <th>Date and Time</th>
+            </tr>
+        </thead>
+        <tbody class= "activity-body">
+            {% for l in log %}
+            <tr>
+                <td id="activity-row" data-heading="Name">{{l.user.first_name}} {{l.user.last_name}}</td>
+                <td id="activity-row" data-heading="Role">{{l.user.user.groups.all.0}}</td>
+                <td id="activity-row" data-heading="Action">{{l.action}}</td>
+                <td id="activity-row" data-heading="Date and Time">{{l.activity_date|date:'Y-m-d h:i a'}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

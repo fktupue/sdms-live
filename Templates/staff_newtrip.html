@@ -1,0 +1,101 @@
+{% extends 'staff_navbar.html' %}
+
+{% block content %}
+{% load static %}
+<div class="form-container">
+    <h1>Bagong Trip</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="row">
+            <div class="col-6 justify-content-center">
+                <div class="select-box-form">
+                    <div class="options-container">
+                        {{ form.farm.errors }}
+                        {% for f in form.farm %}
+                        <div class="option">
+                            {{ f.tag }}
+                            <label for="{{ f.id_for_label }}">{{ f.choice_label }}</label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="selected">
+                        Pumili ng Farm
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 justify-content-center">
+                <div class="select-box-form">
+                    <div class="options-container-2">
+                        {{ form.truck.errors }}
+                        {% for t in form.truck %}
+                        <div class="option-2">
+                            {{ t.tag }}
+                            <label for="{{ t.id_for_label }}">{{ t.choice_label }}</label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="selected-2">
+                        Pumili ng Truck
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 justify-content-center">
+                <div class="date_field">
+                    {{ form.trip_date.errors }}
+                    {{ form.trip_date }}
+                    <span></span>
+                    <label>Petsa</label>
+                </div>
+            </div>
+            <div class="col-6 justify-content-center">
+                <div class="form_field">
+                    {{ form.bag_count.errors }}
+                    {{ form.bag_count }}
+                    <span></span>
+                    <label>Bilang ng Bag</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 justify-content-center">
+                <div class="form_field">
+                    {{ form.helper_1.errors }}
+                    {{ form.helper_1 }}
+                    <span></span>
+                    <label>Helper 1 (N/A kung wala)</label>
+                </div>
+            </div>
+            <div class="col-4 justify-content-center">
+                <div class="form_field">
+                    {{ form.helper_2.errors }}
+                    {{ form.helper_2 }}
+                    <span></span>
+                    <label>Helper 2 (N/A kung wala)</label>
+                </div>
+            </div>
+            <div class="col-4 justify-content-center">
+                <div class="form_field">
+                    {{ form.helper_3.errors }}
+                    {{ form.helper_3 }}
+                    <span></span>
+                    <label>Helper 3 (N/A kung wala)</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 justify-content-center">
+                <button type='submit' class= 'submitForm'> Save </button>
+            </div>
+            <div class="col-6 justify-content-center">
+                <div class="btn-cont">
+                    <a class="cancelForm" href="{% url 'SDMS:staff-trips' %}"> Cancel </a>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="{% static 'js/selected2.js' %}"></script>
+</div>
+{% endblock %}
