@@ -111,7 +111,7 @@ DATABASES = {
     'PASSWORD': '42fa4379',
     'HOST': 'us-cdbr-east-05.cleardb.net',
     'PORT': '3306',
-    'OPTIONS': {'ssl': {'ca':os.path.join(BASE_DIR, 'cleardb-ca.pem'), 'cert':os.path.join(BASE_DIR, 'b3e5032e0153e5-cert.pem'), 'key':os.path.join(BASE_DIR, 'b3e5032e0153e5-key.pem')},},
+    'OPTIONS': {'ssl': {'ca':'../cleardb-ca.pem', 'cert':'../b3e5032e0153e5-cert.pem', 'key':'../b3e5032e0153e5-key.pem'},},
     }
 }
 
