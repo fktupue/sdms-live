@@ -1036,11 +1036,11 @@ def staff_trips(request):
 def staff_newtrip(request, id=0):
     current_user = User_Account.objects.get(user=request.user.id)
     user_firstname = current_user.first_name.split(' ')[0]
-    current_time = None
+    #current_time = None
     if request.method == "GET":
         if id == 0:
             form = NewTrip()
-            current_time = datetime.now()
+            #current_time = datetime.now()
         else:
             trip = Trips.objects.get(pk=id)
             form = NewTrip(instance=trip)
@@ -1268,7 +1268,7 @@ def staff_newtrip(request, id=0):
                 get_truck = Truck.objects.get(id=trip.truck.id)
                 capacity = get_truck.capacity
                 trip.ref_num = reference_no
-                trip.start_time = current_time
+                #trip.start_time = start
                 trip.driver_basic = driver_basic
                 trip.helper1_basic = helper1_basic
                 trip.helper2_basic = helper2_basic

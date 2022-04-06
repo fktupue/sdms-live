@@ -92,14 +92,26 @@ WSGI_APPLICATION = 'Safedrive.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#     'ENGINE': 'django.db.backends.mysql',
+#     'USER': 'root',
+#     'NAME': 'SDMS_dev',
+#     'PASSWORD': 'fktups@1231',
+#     'HOST': 'localhost',
+#     'PORT': '3306',
+#     }
+# }
+
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.mysql',
-    'USER': 'root',
-    'NAME': 'SDMS_dev',
-    'PASSWORD': 'fktups@1231',
-    'HOST': 'localhost',
+    'USER': 'b3e5032e0153e5',
+    'NAME': 'heroku_4bbc947b11fd686',
+    'PASSWORD': '42fa4379',
+    'HOST': 'us-cdbr-east-05.cleardb.net',
     'PORT': '3306',
+    'OPTIONS': {'ssl': {'ca':os.path.join(BASE_DIR, 'cleardb-ca.pem'), 'cert':os.path.join(BASE_DIR, 'b3e5032e0153e5-cert.pem'), 'key':os.path.join(BASE_DIR, 'b3e5032e0153e5-key.pem')},},
     }
 }
 
