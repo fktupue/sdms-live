@@ -92,28 +92,27 @@ WSGI_APPLICATION = 'Safedrive.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#     'ENGINE': 'django.db.backends.mysql',
+#     'USER': 'root',
+#     'NAME': 'SDMS_dev',
+#     'PASSWORD': 'fktups@1231',
+#     'HOST': 'localhost',
+#     'PORT': '3306',
+#     }
+# }
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.mysql',
-    'USER': 'root',
-    'NAME': 'SDMS_dev',
-    'PASSWORD': 'fktups@1231',
-    'HOST': 'localhost',
+    'USER': 'b3e5032e0153e5',
+    'NAME': 'heroku_4bbc947b11fd686',
+    'PASSWORD': '42fa4379',
+    'HOST': 'us-cdbr-east-05.cleardb.net',
     'PORT': '3306',
     }
 }
 
-# DATABASES = {
-#     'default': {
-#     'ENGINE': 'django.db.backends.mysql',
-#     'USER': 'b3e5032e0153e5',
-#     'NAME': 'heroku_4bbc947b11fd686',
-#     'PASSWORD': '42fa4379',
-#     'HOST': 'us-cdbr-east-05.cleardb.net',
-#     'PORT': '3306',
-#     'OPTIONS': {'ssl': {'ca':'../cleardb-ca.pem', 'cert':'../b3e5032e0153e5-cert.pem', 'key':'../b3e5032e0153e5-key.pem'},},
-#     }
-# }
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
