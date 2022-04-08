@@ -1,11 +1,13 @@
 from django.urls import path
 from . import views
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import redirect
 app_name = 'SDMS'
 
 urlpatterns = [
     #Login
     path('login/', views.login_user, name='login'),
+    path('', lambda req: redirect('SDMS:login')),
     path('logout/', views.logout_user, name='logout'),
 
     #Superuser
@@ -40,9 +42,9 @@ urlpatterns = [
     #Management
     path('management-home/', views.management_home, name='management-home'),
     path('management-trips', views.management_trips, name='management-trips'),
+    path('management-newtrip', views.management_newtrip, name='management-newtrip'),
     path('management-trips/trip<str:id>', views.management_viewtrip, name='management-viewtrip'),
     path('management-trips/generate-tripreport', views.generate_report, name='management-generatetripreport'),
-    #path('financialreport-download', views.generate_financialreport.as_view(), name='management-generatefinancialreport'),
     path('financialreport-download/cl<str:id>', views.generate_financialreport, name='management-generatefinancialreport'),
     path('management-financialreport', views.management_financialreport, name='management-financialreport'),
 
@@ -51,7 +53,6 @@ urlpatterns = [
     path('staff-trips', views.staff_trips, name='staff-trips'),
     path('staff-newtrip', views.staff_newtrip, name='staff-newtrip'),
     path('staff-trips/<str:id>', views.staff_edittrip, name='staff-viewtrip'),
-    path('staff-financialreport', views.staff_financialreport, name='staff-financialreport'),
 
     #Driver
     path('driver-home/', views.driver_home, name='driver-home'),

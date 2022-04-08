@@ -25,7 +25,7 @@ def generate_refno():
 
 #generate csv
 @login_required(login_url="SDMS:login")
-@allowed_users(allowed_roles=['Management'])
+@allowed_users(allowed_roles=['Management', "Staff"])
 def generate_report(request):
     if request.method == "GET":
         response = HttpResponse(content_type='text/csv')
@@ -935,6 +935,301 @@ def management_viewtrip(request, id):
 
 @login_required(login_url="login")
 @allowed_users(allowed_roles=['Management'])
+def management_newtrip(request, id=0):
+    current_user = User_Account.objects.get(user=request.user.id)
+    user_firstname = current_user.first_name.split(' ')[0]
+    #current_time = None
+    if request.method == "GET":
+        if id == 0:
+            form = NewTrip()
+            #current_time = datetime.now()
+        else:
+            trip = Trips.objects.get(pk=id)
+            form = NewTrip(instance=trip)
+        context = {'form' : form,
+            'first_name' : user_firstname,
+            'screen_name' : 'New Trip',
+        }
+        if request.user_agent.is_mobile or request.user_agent.is_tablet:
+            return render(request, "mobile/management_newtrip.html", context)
+        else:
+            return render(request, "management_newtrip.html", context)
+    if request.method == "POST":
+        if id == 0:
+            form = NewTrip(request.POST)
+        else:
+            trip = Trips.objects.get(pk=id)
+            form = NewTrip(request.POST, request.FILES, instance=trip)
+        state = 0
+        if form.is_valid():
+            form.save()
+            state += 1
+
+            if state == 1:
+                reference_no = generate_refno()
+
+                get_farm_form = request.POST.get('farm')
+                get_truck_form = request.POST.get('truck')
+
+                farm_data = Farm.objects.get(id=get_farm_form)
+                truck_data = Truck.objects.get(id=get_truck_form)
+
+                distance_class = 0
+                driver_basic = 0
+                helper1_basic = 0
+                helper2_basic = 0
+                helper3_basic = 0
+
+                if 0 <= farm_data.distance <= 40:
+                    distance_class += 1
+                if 41 <= farm_data.distance <= 80:
+                    distance_class += 2
+                if 81 <= farm_data.distance <= 120:
+                    distance_class += 3
+                if 121 <= farm_data.distance <= 160:
+                    distance_class += 4
+                if 161 <= farm_data.distance <= 200:
+                    distance_class += 5
+                if 201 <= farm_data.distance <= 240:
+                    distance_class += 6
+                if farm_data.distance == 310:
+                    distance_class += 430
+                if farm_data.distance == 340:
+                    distance_class += 675
+
+                if distance_class == 1 and truck_data.truck_classification == 'ELF':
+                    driver_basic += 280
+                    
+                    helper1_basic += 180
+                
+                    helper2_basic += 180
+                
+                    helper3_basic += 180
+                if distance_class == 1 and truck_data.truck_classification == 'FWD':
+                    driver_basic += 330
+                    
+                    helper1_basic += 250
+                
+                    helper2_basic += 250
+                
+                    helper3_basic += 250
+                if distance_class == 1 and truck_data.truck_classification == 'PFWD-1':
+                    driver_basic += 430
+                    
+                    helper1_basic += 330
+                
+                    helper2_basic += 330
+                
+                    helper3_basic += 330
+                if distance_class == 1 and truck_data.truck_classification == 'PFWD-2':
+                    driver_basic += 530
+                    
+                    helper1_basic += 280
+                
+                    helper2_basic += 280
+                
+                    helper3_basic += 280
+                
+                if distance_class == 2 and truck_data.truck_classification == 'ELF':
+                    driver_basic += 330
+                    
+                    helper1_basic += 180
+                
+                    helper2_basic += 180
+                
+                    helper3_basic += 180
+                if distance_class == 2 and truck_data.truck_classification == 'FWD':
+                    driver_basic += 430
+                    
+                    helper1_basic += 250
+                
+                    helper2_basic += 250
+                
+                    helper3_basic += 250
+                if distance_class == 2 and truck_data.truck_classification == 'PFWD-1':
+                    driver_basic += 580
+                    
+                    helper1_basic += 330
+                
+                    helper2_basic += 330
+                
+                    helper3_basic += 330
+                if distance_class == 2 and truck_data.truck_classification == 'PFWD-2':
+                    driver_basic += 730
+                    
+                    helper1_basic += 280
+                
+                    helper2_basic += 280
+                
+                    helper3_basic += 280
+                
+                if distance_class == 3 and truck_data.truck_classification == 'ELF':
+                    driver_basic += 380
+                    
+                    helper1_basic += 200
+                
+                    helper2_basic += 200
+                
+                    helper3_basic += 200
+                if distance_class == 3 and truck_data.truck_classification == 'FWD':
+                    driver_basic += 500
+                    
+                    helper1_basic += 280
+                
+                    helper2_basic += 280
+                
+                    helper3_basic += 280 
+                if distance_class == 3 and truck_data.truck_classification == 'PFWD-1':
+                    driver_basic += 675
+                    
+                    helper1_basic += 380
+                
+                    helper2_basic += 380
+                
+                    helper3_basic += 380
+                if distance_class == 3 and truck_data.truck_classification == 'PFWD-2':
+                    driver_basic += 850
+                    
+                    helper1_basic += 320
+                
+                    helper2_basic += 320
+                
+                    helper3_basic += 320
+
+                if distance_class == 4 and truck_data.truck_classification == 'ELF':
+                    driver_basic += 430
+                    
+                    helper1_basic += 200
+                
+                    helper2_basic += 200
+                
+                    helper3_basic += 200
+                if distance_class == 4 and truck_data.truck_classification == 'FWD':
+                    driver_basic += 550
+                    
+                    helper1_basic += 280
+                
+                    helper2_basic += 280
+                
+                    helper3_basic += 280 
+                
+                '''
+                if distance_class == 4 and truck_data.truck_classification == 'PFWD-1':
+                    driver_basic += 675
+                    
+                    helper1_basic += 380
+                
+                    helper2_basic += 380
+                
+                    helper3_basic += 380
+                if distance_class == 4 and truck_data.truck_classification == 'PFWD-2':
+                    driver_basic += 850
+                    
+                    helper1_basic += 320
+                
+                    helper2_basic += 320
+                
+                    helper3_basic += 320
+                '''
+
+                if distance_class == 5 and truck_data.truck_classification == 'ELF':
+                    driver_basic += 480
+                    
+                    helper1_basic += 215
+                
+                    helper2_basic += 215
+                
+                    helper3_basic += 215
+                if distance_class == 5 and truck_data.truck_classification == 'FWD':
+                    driver_basic += 600
+                    
+                    helper1_basic += 310
+                
+                    helper2_basic += 310
+                
+                    helper3_basic += 310
+
+                if distance_class == 6 and truck_data.truck_classification == 'ELF':
+                    driver_basic += 530
+                    
+                    helper1_basic += 215
+                
+                    helper2_basic += 215
+                
+                    helper3_basic += 215
+                if distance_class == 6 and truck_data.truck_classification == 'FWD':
+                    driver_basic += 650
+                    
+                    helper1_basic += 310
+                
+                    helper2_basic += 310
+                
+                    helper3_basic += 310
+
+                trip = Trips.objects.all().last()
+                get_truck = Truck.objects.get(id=trip.truck.id)
+                capacity = get_truck.capacity
+                trip.ref_num = reference_no
+                #trip.start_time = start
+                trip.driver_basic = driver_basic
+                trip.helper1_basic = helper1_basic
+                trip.helper2_basic = helper2_basic
+                trip.helper3_basic = helper3_basic
+                trip.create_by = request.user
+                if trip.bag_count < (capacity * 0.70):
+                    trip.base_rate += (Decimal(capacity * 0.70) * trip.farm.rate_code)
+                else:
+                    trip.base_rate += (trip.bag_count * trip.farm.rate_code)
+                trip.save()
+                current_date = datetime.today()
+                try:
+                    driver_findata = Driver_FinancialReport.objects.get(driver__id=trip.truck.driver.id, trip_month=current_date.month, trip_year=current_date.year)
+                    driver_findata.trip_count += 1
+                    driver_findata.bag_count += trip.bag_count
+                    driver_findata.driver_basic += trip.driver_basic
+                    driver_findata.save()
+                except Driver_FinancialReport.DoesNotExist :
+                    Driver_FinancialReport.objects.create(
+                        driver = User_Account.objects.get(id=trip.truck.driver.id),
+                        trip_month = int(current_date.month),
+                        trip_year = int(current_date.year),
+                        trip_count = 1,
+                        bag_count = trip.bag_count,
+                        driver_basic = trip.driver_basic
+                    )
+                try:
+                    client_findata = Client_FinancialReport.objects.get(client__id=trip.farm.company.id, trip_month=current_date.month, trip_year=current_date.year)
+                    client_findata.trip_inprogress += 1
+                    client_findata.bag_count += trip.bag_count
+                    if trip.bag_count < (capacity * 0.70):
+                        client_findata.base_rate += ((Decimal(capacity * 0.70) * trip.farm.rate_code))
+                    else:
+                        client_findata.base_rate += (trip.bag_count * trip.farm.rate_code)
+                    client_findata.save()
+                except Client_FinancialReport.DoesNotExist:
+                    base = 0
+                    if trip.bag_count < (capacity * 0.70):
+                        base += ((Decimal(capacity * 0.70) * trip.farm.rate_code))
+                    else:
+                        base += (trip.bag_count * trip.farm.rate_code)
+                    Client_FinancialReport.objects.create(
+                        client = Company.objects.get(id=trip.farm.company.id),
+                        trip_month = int(current_date.month),
+                        trip_year = int(current_date.year),
+                        trip_inprogress = 1,
+                        bag_count = trip.bag_count,
+                        base_rate = base
+                    )
+
+                Activity_Log.objects.create(
+                    user = User_Account.objects.get(user=request.user),
+                    action = 'CREATE (' + reference_no + ")"
+                )
+            
+        return redirect('SDMS:management-trips')
+
+@login_required(login_url="login")
+@allowed_users(allowed_roles=['Management'])
 def management_financialreport(request):  
     current_user = User_Account.objects.get(user=request.user.id)
     user_firstname = current_user.first_name.split(' ')[0]
@@ -1401,57 +1696,6 @@ def staff_edittrip(request, id=0):
                 action = 'EDIT (' + trip.ref_num + ")"
             )
         return redirect('SDMS:staff-trips')
-
-@login_required(login_url="login")
-@allowed_users(allowed_roles=['Staff'])
-def staff_financialreport(request):
-    current_user = User_Account.objects.get(user=request.user.id)
-    user_firstname = current_user.first_name.split(' ')[0]
-    total_trips = 0
-    active_trips = 0
-    completed_trips = 0
-    total_bags = 0
-    active_bags = 0
-    completed_bags = 0
-    total_receivables = 0
-    current_date = datetime.now()
-    get_totals = Trips.objects.filter(trip_date__month=current_date.month, trip_date__year=current_date.year)
-    for i in get_totals:
-        total_trips += 1
-        total_bags += i.bag_count
-        if i.trip_status == 'SCHEDULED' or i.trip_status =='IN PROGRESS':
-            active_trips += 1
-            active_bags += i.bag_count
-        if i.trip_status == 'DELIVERED':
-            completed_trips += 1
-            completed_bags += i.bag_count
-        if i.payment_status == 'UNPAID':
-            total_receivables += (i.base_rate + i.rate_adjustment)
-    clients = Company.objects.all()
-    get_users = User.objects.filter(groups__name__in=['Driver'])
-    client_data = Client_FinancialReport.objects.filter(trip_month=int(current_date.month), trip_year=int(current_date.year)).order_by('client__id')
-    driver_data = Driver_FinancialReport.objects.filter(trip_month=int(current_date.month), trip_year=int(current_date.year)).order_by('driver__id')
-
-    context = {'screen_name' : "Financial Report",
-    'first_name' : user_firstname,
-    'clients' : clients,
-    'total_trips' : total_trips,
-    'active_trips' : active_trips,
-    'completed_trips' : completed_trips,
-    'total_bags' : total_bags,
-    'active_bags' : active_bags,
-    'completed_bags' : completed_bags,
-    'total_receivables' : total_receivables,
-    'users' : get_users,
-    'client_data' : client_data,
-    'driver_data' : driver_data,
-    'month' : str(current_date.strftime("%b")),
-    'year' : str(current_date.year)
-    }
-    if request.user_agent.is_mobile or request.user_agent.is_tablet:
-        return render(request, "mobile/staff_financial.html", context)
-    else:
-        return render(request, "staff_financial.html", context)
 
 #DRIVER
 @login_required(login_url="login")

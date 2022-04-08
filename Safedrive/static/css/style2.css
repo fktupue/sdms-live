@@ -1694,6 +1694,25 @@ form .form_field input[type=number]::-webkit-inner-spin-button {
 }
 
 .report-btn {
+    width: 100%;
+    margin-top: 1.5rem;
+    margin-left: 1.8rem;
+    margin-bottom: 3rem;
+    height: 3rem;
+    border: 0.125rem solid;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    font-size: 1.125rem;
+    border-color: white;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    transition: 0.5s;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+}
+
+.new-btn {
     width: 80%;
     margin-top: 1.5rem;
     margin-left: 1.8rem;
@@ -1730,7 +1749,13 @@ form .form_field input[type=number]::-webkit-inner-spin-button {
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
 }
 
-.report-btn:hover,
+.report-btn:hover{
+    border-color: white;
+    color: #548235;
+    background-color: white;
+}
+
+.new-btn:hover,
 .cancel-trip-btn:hover {
     border-color: white;
     background: rgba(255, 255, 255, 0.1);

@@ -288,7 +288,7 @@ form .date-field input[type=date]{
     max-width: 10rem;
     width: 100%;
     height: auto;
-    border-radius: 15px;
+    border-radius: 50px;
     border: 1px solid #282828;
     overflow: hidden;
 }
@@ -314,6 +314,17 @@ form .date-field input[type=date]{
     border-radius: 50px;
     background: #548235;
     color: #FFFFFF;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+#generate-csv{
+    width: 100%;
+    height: 2rem;
+    border: 1px solid #548235;
+    border-radius: 50px;
+    background: none;
+    color: #548235;
     font-size: 0.9rem;
     font-weight: 600;
     transition: 0.3s ease;
@@ -523,7 +534,7 @@ form .date-field input[type=date]{
 #custom-btn{
     margin-top: 2.5rem;
     border: 1px solid #548235;
-    border-radius: 15px;
+    border-radius: 50px;
     background: none;
     font-weight: 400;
     color: #548235;
