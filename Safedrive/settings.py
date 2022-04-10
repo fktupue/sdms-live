@@ -27,7 +27,8 @@ SECRET_KEY = '7e-co=0%%dcf5mw4sqrh-cjk1doanfw4e@povwb^-$$(vy*ut8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['safedrive-sdms.herokuapp.com', 'sdms-app-development.herokuapp.com', '127.0.0.1', 'localhost']
+#ALLOWED_HOSTS = ['sdms-app-development.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['safedrive-sdms.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -102,12 +103,22 @@ WSGI_APPLICATION = 'Safedrive.wsgi.application'
 #     'PORT': '3306',
 #     }
 # }
+# DATABASES = {
+#     'default': {
+#     'ENGINE': 'django.db.backends.mysql',
+#     'USER': 'b3e5032e0153e5',
+#     'NAME': 'heroku_4bbc947b11fd686',
+#     'PASSWORD': '42fa4379',
+#     'HOST': 'us-cdbr-east-05.cleardb.net',
+#     'PORT': '3306',
+#     }
+# }
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.mysql',
-    'USER': 'b3e5032e0153e5',
-    'NAME': 'heroku_4bbc947b11fd686',
-    'PASSWORD': '42fa4379',
+    'USER': 'b859caf1d3b901',
+    'NAME': 'heroku_cfa9d33ddf687aa',
+    'PASSWORD': 'b8ca8759',
     'HOST': 'us-cdbr-east-05.cleardb.net',
     'PORT': '3306',
     }
