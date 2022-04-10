@@ -175,8 +175,8 @@ form .date-field input[type=date]{
     height: 130px;
     background-color: #548235;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
     display: flex;
     overflow-x: auto;
 }
@@ -239,7 +239,7 @@ form .date-field input[type=date]{
 #active-trips, #completed-trips, #bag-count-home{
     background-color: #FFFFFF;
     width: 100%;
-    border-radius: 20px;
+    border-radius: 50px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -249,7 +249,7 @@ form .date-field input[type=date]{
 #financial-trips, #financial-bags, #client-breakdown{
     background-color: #FFFFFF;
     width: 100%;
-    border-radius: 20px;
+    border-radius: 50px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     padding: 2rem;
     margin-top: 1rem;
@@ -258,7 +258,7 @@ form .date-field input[type=date]{
 #driver-breakdown{
     background-color: #FFFFFF;
     width: 100%;
-    border-radius: 20px;
+    border-radius: 50px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     padding: 1rem;
     margin-top: 1rem;
@@ -287,7 +287,7 @@ form .date-field input[type=date]{
 #pfp-wrapper{
     max-width: 10rem;
     width: 100%;
-    height: auto;
+    height: 10rem;
     border-radius: 50px;
     border: 1px solid #282828;
     overflow: hidden;

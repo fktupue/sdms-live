@@ -38,7 +38,7 @@ searchField.addEventListener('keyup',(e)=>{
                                     </div>
                                     <div class="col-2 justify-content-center" id="action-cont">
                                         <div class="view-item" id="view-item">
-                                            <a class="btn" href="driver-trips/${item.id}"><i class='bx bxs-edit'></i></a>
+                                            <a class="btn" href="driver-trips/${item.id}"><i class="fa-solid fa-pen-to-square"></i></a>
                                         </div>
                                     </div>
                                 </div>

@@ -932,8 +932,7 @@ body::-webkit-scrollbar-track{
 
 .user .prof-pic-wrapper {
     width: 100%;
-    max-height: 7rem;
-    height: auto;
+    height: 7rem;
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     margin: 0.8rem 0.8rem 0.8rem 0.8rem;
@@ -1712,7 +1711,8 @@ form .form_field input[type=number]::-webkit-inner-spin-button {
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
 }
 
-.new-btn {
+.new-btn,
+.new-btn-driver {
     width: 80%;
     margin-top: 1.5rem;
     margin-left: 1.8rem;
@@ -1729,6 +1729,10 @@ form .form_field input[type=number]::-webkit-inner-spin-button {
     outline: none;
     transition: 0.5s;
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+}
+
+.new-btn-driver {
+    width: 100%;
 }
 
 .cancel-trip-btn {
@@ -1756,7 +1760,8 @@ form .form_field input[type=number]::-webkit-inner-spin-button {
 }
 
 .new-btn:hover,
-.cancel-trip-btn:hover {
+.cancel-trip-btn:hover,
+.new-btn-driver:hover {
     border-color: white;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(25px);
@@ -1929,7 +1934,6 @@ form .form_field input[type=number]::-webkit-inner-spin-button {
     text-decoration: none;
     font-size: 2.3rem;
     margin-top: 1.5rem;
-    font-weight: 500;
     margin-left: 1.7rem;
 }
 

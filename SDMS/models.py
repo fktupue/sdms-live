@@ -66,7 +66,6 @@ class Truck(models.Model):
         return str(self.plate_number) + ' (' + str(self.truck_classification) + ')'
 
 class Trips(models.Model):
-    start_time = models.DateTimeField(blank=True, null=True)
     create_date = models.DateTimeField(auto_now_add=True)
     create_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     last_edit_date = models.DateTimeField(blank=True, null=True)

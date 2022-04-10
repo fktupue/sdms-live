@@ -40,10 +40,10 @@ searchField.addEventListener('keyup',(e)=>{
                                         <div class="view-item" id="superuser-view-item">
                                             <div class="row">
                                                 <div class="col-6 justify-content-center" id="view">
-                                                    <a class="btn" href="../superuser-farms/frm${item.id}"><i class='bx bxs-edit'></i></a>
+                                                    <a class="btn" href="../superuser-farms/frm${item.id}"><i class="fa-solid fa-pen-to-square"></i></a>
                                                 </div>
                                                 <div class="col-6 justify-content-center" id="delete">
-                                                    <a class="btn" href="../superuser-farms/delete/frm${item.id}"><i class='bx bx-trash'></i></a>
+                                                    <a class="btn" href="../superuser-farms/delete/frm${item.id}"><i class="fa-solid fa-trash-can"></i></a>
                                                 </div>
                                             </div>
                                         </div>

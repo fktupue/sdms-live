@@ -835,7 +835,7 @@ def management_home(request):
     unpaid = Trips.objects.filter(payment_status="UNPAID")
     trips_today = Trips.objects.filter(trip_date=datetime.today())
     for i in unpaid:
-        base_rate += (i.bag_count * i.farm.rate_code)
+        base_rate += (i.base_rate)
         adjustment += i.rate_adjustment
     for t in trips:
         if t.trip_status == "SCHEDULED":
@@ -938,11 +938,9 @@ def management_viewtrip(request, id):
 def management_newtrip(request, id=0):
     current_user = User_Account.objects.get(user=request.user.id)
     user_firstname = current_user.first_name.split(' ')[0]
-    #current_time = None
     if request.method == "GET":
         if id == 0:
             form = NewTrip()
-            #current_time = datetime.now()
         else:
             trip = Trips.objects.get(pk=id)
             form = NewTrip(instance=trip)
@@ -1170,7 +1168,6 @@ def management_newtrip(request, id=0):
                 get_truck = Truck.objects.get(id=trip.truck.id)
                 capacity = get_truck.capacity
                 trip.ref_num = reference_no
-                #trip.start_time = start
                 trip.driver_basic = driver_basic
                 trip.helper1_basic = helper1_basic
                 trip.helper2_basic = helper2_basic
@@ -1283,14 +1280,8 @@ def staff_home(request):
     user_firstname = current_user.first_name.split(' ')[0]
     unpaid_count = 0
     active_count = 0
-    base_rate = 0
-    adjustment = 0
     trips = Trips.objects.all()
-    unpaid = Trips.objects.filter(payment_status="UNPAID")
     trips_today = Trips.objects.filter(trip_date=datetime.today())
-    for i in unpaid:
-        base_rate += (i.base_rate + i.rate_adjustment)
-        adjustment += i.rate_adjustment
     for t in trips:
         if t.trip_status == "SCHEDULED":
             active_count += 1
@@ -1302,7 +1293,6 @@ def staff_home(request):
     'first_name' : user_firstname,
     'unpaid_trips' : unpaid_count,
     'active_trips' : active_count,
-    'receivables' : (base_rate - adjustment),
     'trips_today' : trips_today
     }
     if request.user_agent.is_mobile or request.user_agent.is_tablet:
@@ -1331,11 +1321,9 @@ def staff_trips(request):
 def staff_newtrip(request, id=0):
     current_user = User_Account.objects.get(user=request.user.id)
     user_firstname = current_user.first_name.split(' ')[0]
-    #current_time = None
     if request.method == "GET":
         if id == 0:
             form = NewTrip()
-            #current_time = datetime.now()
         else:
             trip = Trips.objects.get(pk=id)
             form = NewTrip(instance=trip)
@@ -1563,7 +1551,6 @@ def staff_newtrip(request, id=0):
                 get_truck = Truck.objects.get(id=trip.truck.id)
                 capacity = get_truck.capacity
                 trip.ref_num = reference_no
-                #trip.start_time = start
                 trip.driver_basic = driver_basic
                 trip.helper1_basic = helper1_basic
                 trip.helper2_basic = helper2_basic
@@ -1749,11 +1736,9 @@ def driver_trips(request):
 def driver_newtrip(request, id=0):
     current_user = User_Account.objects.get(user=request.user.id)
     user_firstname = current_user.first_name.split(' ')[0]
-    current_time = None
     if request.method == "GET":
         if id == 0:
             form = NewTrip_driver()
-            current_time = datetime.now()
         else:
             trip = Trips.objects.get(pk=id)
             form = NewTrip_driver(instance=trip)
@@ -1969,7 +1954,6 @@ def driver_newtrip(request, id=0):
                 get_current_driver = User_Account.objects.get(user__id=request.user.id)
                 trip.truck = Truck.objects.get(driver=get_current_driver)
                 trip.driver_basic = driver_basic
-                trip.start_time = current_time
                 trip.helper1_basic = helper1_basic
                 trip.helper2_basic = helper2_basic
                 trip.helper3_basic = helper3_basic
