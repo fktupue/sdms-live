@@ -95,13 +95,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-6 justify-content-center">
-                            <button type='submit' class= 'submitForm'> Save </button>
-                        </div>
-                        <div class="col-6 justify-content-center">
-                            <div class="btn-cont">
-                                <a class="cancelForm" href="{% url 'SDMS:driver-home' %}"> Cancel </a>
+                    <div class="normal-action-cont" id="normal-action-cont">
+                        <div class="row">
+                            <div class="col-6 justify-content-center">
+                                <button type='submit' class= 'submitForm'> Save </button>
+                            </div>
+                            <div class="col-6 justify-content-center">
+                                <button type='button' class= 'cancel' id="cancel" onclick="location.href='{% url 'SDMS:driver-home' %}'"> Cancel </button>
                             </div>
                         </div>
                     </div>
@@ -111,5 +111,11 @@
         <script src="{% static 'js/main.js' %}"></script>
         <script src="{% static 'js/selected1.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/driver_trip_search.js' %}"></script>
+        <script>
+            {% for msg in messages %}
+            alertify.set('notifier','position', 'top-right');
+            alertify.warning('{{msg}}');
+            {% endfor %}
+        </script>
     </body>
 </html>

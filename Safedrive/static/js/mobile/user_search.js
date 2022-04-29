@@ -32,9 +32,9 @@ searchField.addEventListener('keyup',(e)=>{
                                 <div class="row">
                                     <div class="col-9 justify-content-center">
                                         <h3>${item.first_name} ${item.last_name}</h3>
+                                        <p>Username: ${item.user__username}</p>
                                         <p>Account Role: ${item.user__groups__name}</p>
                                         <p>Contact Number: ${item.contact_number}</p>
-                                        <p>Email Address: ${item.email_address}</p>
                                     </div>
                                     <div class="col-3 justify-content-center" id="action-cont">
                                         <div class="view-item" id="superuser-view-item">

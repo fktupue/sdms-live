@@ -31,26 +31,6 @@ body::-webkit-scrollbar-thumb{
     background-color: rgb(228 228 228 / 15%)
 }
 
-@keyframes gradient {
-	0% {background-position: 0% 50%;}
-	50% {background-position: 100% 50%;}
-	100% {background-position: 0% 50%;}
-}
-
-/*Login*/
-
-@keyframes fade{
-    from {opacity: 0%;}
-    to {opacity: 100%;}
-}
-
-@keyframes fade-delay{
-    0% {opacity: 0%;}
-    25% {opacity: 0%;}
-    50% {opacity: 50%;}
-    100% {opacity: 100%;}
-}
-
 .safedrive-logo{
     display: block;
     max-width: 156.25rem;
@@ -68,14 +48,9 @@ body::-webkit-scrollbar-thumb{
     width: 25rem;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    /*border-right: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);*/
     backdrop-filter: blur(25px);
-    animation-name: fade-delay;
-    animation-duration: 2s;
-    animation-timing-function: linear;
 }
 
 .login-container h1{
@@ -174,9 +149,6 @@ input[type="submit"]:hover{
     width: 100%;
     height: 4.5rem;
     text-align: center;
-    animation-name: fade-delay;
-    animation-duration: 4s;
-    animation-timing-function: ease;
 }
 
 .footer h6{
@@ -203,4 +175,17 @@ input[type="submit"]:hover{
 .super-home h1{
     color: white;
     font-weight: 900;
+}
+
+/* Alertifyjs */
+.alertify-notifier .ajs-message.ajs-error {
+    border-radius: 15px;
+    background: #ff6961 !important;
+    border: 1px solid white !important;
+    backdrop-filter: blur(25px) !important;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3) !important;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-shadow: none !important;
+    color: white !important;
 }

@@ -33,10 +33,22 @@
                     </div>
                 </div>
                 <div class="form-field" id="form-field">
+                    {{ form.bag_count.errors }}
+                    {{ form.bag_count }}
+                    <span></span>
+                    <label>Bilang ng Bag</label>
+                </div>
+                <div class="form-field" id="form-field">
                     {{ form.additional_expense.errors }}
                     {{ form.additional_expense }}
                     <span></span>
                     <label>Karagdagang Gastos</label>
+                </div>
+                <div class="form-field" id="form-field">
+                    {{ form.additional_expense_remark.errors }}
+                    {{ form.additional_expense_remark }}
+                    <span></span>
+                    <label>Remarks</label>
                 </div>
                 <div class="submit-container" id="submit-container">
                     <button type='submit' class= 'submit-button' id="submit-button">Save</button>
@@ -45,5 +57,11 @@
         </div>
     </div>
     <script type="text/javascript" src="{% static 'js/selected1.js' %}"></script>
+    <script>
+        {% for msg in messages %}
+            alertify.set('notifier','position', 'top-center');
+            alertify.warning('{{msg}}');
+        {% endfor %}
+    </script>
 </div>
 {% endblock %}

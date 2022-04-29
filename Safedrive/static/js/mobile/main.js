@@ -6,9 +6,9 @@ btn.onclick = function(){
 }
 
 function showTime(){
-    var date = new Date();
-    var h = date.getHours(); // 0 - 23
-    var m = date.getMinutes(); // 0 - 59
+    var date_today = new Date();
+    var h = date_today.getHours(); // 0 - 23
+    var m = date_today.getMinutes(); // 0 - 59
     var session = "AM";
     
     if(h == 0){
@@ -34,13 +34,13 @@ function showDate(){
     var now = new Date();
     var day = now.getDay();
         mo = now.getMonth();
-        date = now.getDate();
+        date_today = now.getDate();
         yr = now.getFullYear();
 
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     var ids = ["dayname", "month", "daynum", "year"];
-    var values = [week[day], months[mo], date, yr]
+    var values = [week[day], months[mo], date_today, yr]
 
     for(var i = 0; i < ids.length; i++)
     document.getElementById(ids[i]).firstChild.nodeValue = values[i];

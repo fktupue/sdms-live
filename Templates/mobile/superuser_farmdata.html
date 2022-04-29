@@ -25,7 +25,7 @@
                                 <h3>{{f.farm_name}}</h3>
                                 <p>Account: {{f.company}}</p>
                                 <p>Address: {{f.address_line_1}} {{f.address_line_2}} {{f.city}} {{f.province}} {{f.zip_code}}</p>
-                                <p>Distance: {{f.distance}} | Rate Code: {{f.rate_code}}</p>
+                                <p>Distance: {{f.distance}}</p>
                             </div>
                             <div class="col-3 justify-content-center" id="action-cont">
                                 <div class="view-item" id="superuser-view-item">
@@ -52,5 +52,11 @@
         </div>
     </div>
     <script type="text/javascript" src="{% static 'js/mobile/farm_search.js' %}"></script>
+    <script>
+        {% for msg in messages %}
+        alertify.set('notifier','position', 'top-center');
+        alertify.success('{{msg}}');
+        {% endfor %}
+    </script>
 </div>
 {% endblock %}

@@ -7,7 +7,8 @@
         <h1>New User</h1>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form.non_field_errors }}
+            {{ account_form.non_field_errors }}
+            {{ user_form.non_field_errors }}
             <div class="pfp-container" id="pfp-container">
                 <div class="wrapper" id="pfp-wrapper">
                     <div class="pfp-image" id="pfp-image">
@@ -15,22 +16,25 @@
                     </div>
                 </div>
             </div>
-            <input type="file" id="default-btn" name="profile_picture" accept=".png,.jpg,.jpeg" hidden>
+            {{ account_form.profile_pic }}
             <div class="upload-btn-container" id="upload-btn-container">
                 <button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose image</button>
             </div>
             <div class="txt_field" id="form-field">
-                <input type="text" name="first_name" value="" maxlength="50" required>
+                {{ account_form.first_name.errors }}
+                {{ account_form.first_name }}
                 <span></span>
                 <label>First Name</label>
             </div>
             <div class="txt_field" id="form-field">
-                <input type="text" name="middle_name" value="" maxlength="50" required>
+                {{ account_form.middle_name.errors }}
+                {{ account_form.middle_name }}
                 <span></span>
                 <label>Middle Name</label>
             </div>
             <div class="txt_field" id="form-field">
-                <input type="text" name="last_name" value="" maxlength="50" required>
+                {{ account_form.last_name.errors }}
+                {{ account_form.last_name }}
                 <span></span>
                 <label>Last Name</label>
             </div>
@@ -65,29 +69,34 @@
                 </div>
             </div>
             <div class="txt_field" id="form-field">
-                <input type="text" name="contact_number" value="" maxlength="15" required>
+                {{ account_form.contact_number.errors }}
+                {{ account_form.contact_number }}
                 <span></span>
                 <label>Contact Number</label>
             </div>
             <div class="txt_field" id="form-field">
-                <input type="text" name="email_address" value="" maxlength="50" required>
+                {{ account_form.email_address.errors }}
+                {{ account_form.email_address }}
                 <span></span>
                 <label>Email Address (N/A if none)</label>
             </div>
             <div class="txt_field" id="form-field">
-                <input type="text" name="username" value="" required>
+                {{ user_form.username.errors }}
+                {{ user_form.username }}
                 <span></span>
                 <label>Username</label>
             </div>
             <div class="txt_field" id="form-field">
-                <input type="password" name="password1" value="" required>
+                {{ user_form.password1.errors }}
+                {{ user_form.password1 }}
                 <span></span>
                 <label>Password</label>
             </div>
             <div class="txt_field" id="form-field">
-                <input type="password" name="password2" value="" required>
+                {{ user_form.password2.errors }}
+                {{ user_form.password2 }}
                 <span></span>
-                <label> Confirm Password</label>
+                <label>Confirm Password</label>
             </div>
             <div class="submit-container" id="submit-container">
                 <button type='submit' class= 'submit-button' id="submit-button">Save</button>

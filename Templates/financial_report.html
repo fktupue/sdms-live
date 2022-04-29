@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load humanize %}
 
 <html lang="en" dir="ltr">
     <head>
@@ -141,7 +142,7 @@
                             <th id="ref-num">Ref No.</th>
                             <th id="trip-date">Trip Date</th>
                             <th id="farm">Farm</th>
-                            <th id="rate-code">Rate Code</th>
+                            <th id="rate-code">Billing Rate</th>
                             <th id="bags">Bags</th>
                             <th id="base-rate">Base Rate</th>
                             <th id="adjustment">Adjustment</th>
@@ -153,10 +154,10 @@
                             <td id="table-body">{{t.ref_num}}</td>
                             <td id="table-body">{{t.trip_date|date:'Y-m-d'}}</td>
                             <td id="table-body">{{t.farm.farm_name}}</td>
-                            <td id="table-body">{{t.farm.rate_code}}</td>
+                            <td id="table-body">{{t.current_billing_rate}}</td>
                             <td id="table-body">{{t.bag_count}}</td>
-                            <td id="table-body">{{t.base_rate}}</td>
-                            <td id="table-body">{{t.rate_adjustment}}</td>
+                            <td id="table-body">{{t.base_rate|floatformat:2|intcomma}}</td>
+                            <td id="table-body">{{t.rate_adjustment|floatformat:2|intcomma}}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -165,7 +166,7 @@
                     <thead class= "total-header" id="total-header">
                         <tr>
                             <th id="spacer"></th>
-                            <th id="total">Total Due: {{total_due}}</th>
+                            <th id="total">Total Due: {{total_due|floatformat:2|intcomma}}</th>
                         </tr>
                     </thead>
                 </table>

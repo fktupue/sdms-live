@@ -8,6 +8,7 @@
         <p>Account: {{trip.farm.company}}</p>
         <p>Farm: {{trip.farm}}</p>
         <p>Bilang ng Bag: {{trip.bag_count}}</p>
+        <p>Truck: {{trip.truck}}</p>
         <p>Driver: {{trip.truck.driver}} | Basic: {{trip.driver_basic}}</p>
         <p>Helper 1: {{trip.helper_1}} | Basic: {{trip.helper1_basic}}</p>
         <p>Helper 2: {{trip.helper_2}} | Basic: {{trip.helper2_basic}}</p>
@@ -59,10 +60,22 @@
                     </div>
                 </div>
                 <div class="form-field" id="form-field">
+                    {{ form.bag_count.errors }}
+                    {{ form.bag_count }}
+                    <span></span>
+                    <label>Bilang ng Bag</label>
+                </div>
+                <div class="form-field" id="form-field">
                     {{ form.driver_additional.errors }}
                     {{ form.driver_additional }}
                     <span></span>
                     <label>Driver Additional</label>
+                </div>
+                <div class="form-field" id="form-field">
+                    {{ form.driver_additional_remarks.errors }}
+                    {{ form.driver_additional_remarks }}
+                    <span></span>
+                    <label>Remarks</label>
                 </div>
                 <div class="submit-container" id="submit-container">
                     <button type='submit' class= 'submit-button' id="submit-button">Save</button>
@@ -71,5 +84,11 @@
         </div>
     </div>
     <script type="text/javascript" src="{% static 'js/selected2.js' %}"></script>
+    <script>
+        {% for msg in messages %}
+        alertify.set('notifier','position', 'top-center');
+        alertify.warning('{{msg}}');
+        {% endfor %}
+    </script>
 </div>
 {% endblock %}

@@ -40,9 +40,10 @@
                                         </div>
                                     </div>
                                 </div>
+                                <h2>Username: {{ user.user.username }}</h2>
                                 <h2>Account Role: {{ user.user.groups.all.0}}</h2>
                                 <h2>Contact Number: {{ user.contact_number }}</h2>
-                                <h2>Email Address: {{ user.email_address }}</h2>
+                                
                             </div>
                         </div>
                     </div>
@@ -71,5 +72,11 @@
         </div>
     </div>
     <script type="text/javascript" src="{% static 'js/user_search.js' %}"></script>
+    <script>
+        {% for msg in messages %}
+        alertify.set('notifier','position', 'top-right');
+        alertify.success('{{msg}}');
+        {% endfor %}
+    </script>
 </div>
 {% endblock %}

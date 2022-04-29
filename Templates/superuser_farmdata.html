@@ -28,7 +28,7 @@
                                         </div>
                                         <div class="col-8 justify-content-center">
                                             <h3>Address: {{ farm.address_line_1 }} {{ farm.address_line_2 }} {{ farm.city }}, {{ farm.province }}</h3>
-                                            <h2>Distance: {{farm.distance}} | Rate Code: {{farm.rate_code}}</h2>
+                                            <h2>Distance: {{farm.distance}}</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -67,4 +67,10 @@
     </div>
 </div>
 <script type="text/javascript" src="{% static 'js/farm_search.js' %}"></script>
+<script>
+    {% for msg in messages %}
+    alertify.set('notifier','position', 'top-right');
+    alertify.success('{{msg}}');
+    {% endfor %}
+</script>
 {% endblock %}

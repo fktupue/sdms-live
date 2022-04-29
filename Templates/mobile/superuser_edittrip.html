@@ -86,5 +86,11 @@
         </form>
     </div>
     <script type="text/javascript" src="{% static 'js/selected2.js' %}"></script>
+    <script>
+        {% for msg in messages %}
+        alertify.set('notifier','position', 'top-center');
+        alertify.warning('{{msg}}');
+        {% endfor %}
+    </script>
 </div>
 {% endblock %}

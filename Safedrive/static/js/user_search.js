@@ -51,9 +51,9 @@ searchField.addEventListener('keyup',(e)=>{
                                                 </div>
                                             </div>
                                         </div>
+                                        <h2>Username: ${item.user__username}</h2>
                                         <h2>Account Role: ${item.user__groups__name}</h2>
                                         <h2>Contact Number: ${item.contact_number}</h2>
-                                        <h2>Email Address: ${item.email_address}</h2>
                                     </div>
                                 </div>
                             </div>

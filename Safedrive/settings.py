@@ -42,12 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'SDMS',
     'jquery',
     'django_filters',
     'django_user_agents',
     'cloudinary_storage',
     'cloudinary',
+    'mathfilters'
 ]
 
 REST_FRAMEWORK = {
@@ -103,26 +105,26 @@ WSGI_APPLICATION = 'Safedrive.wsgi.application'
 #     'PORT': '3306',
 #     }
 # }
-# DATABASES = {
-#     'default': {
-#     'ENGINE': 'django.db.backends.mysql',
-#     'USER': 'b3e5032e0153e5',
-#     'NAME': 'heroku_4bbc947b11fd686',
-#     'PASSWORD': '42fa4379',
-#     'HOST': 'us-cdbr-east-05.cleardb.net',
-#     'PORT': '3306',
-#     }
-# }
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.mysql',
-    'USER': 'b859caf1d3b901',
-    'NAME': 'heroku_cfa9d33ddf687aa',
-    'PASSWORD': 'b8ca8759',
+    'USER': 'b3e5032e0153e5',
+    'NAME': 'heroku_4bbc947b11fd686',
+    'PASSWORD': '42fa4379',
     'HOST': 'us-cdbr-east-05.cleardb.net',
     'PORT': '3306',
     }
 }
+# DATABASES = {
+#     'default': {
+#     'ENGINE': 'django.db.backends.mysql',
+#     'USER': 'b859caf1d3b901',
+#     'NAME': 'heroku_cfa9d33ddf687aa',
+#     'PASSWORD': 'b8ca8759',
+#     'HOST': 'us-cdbr-east-05.cleardb.net',
+#     'PORT': '3306',
+#     }
+# }
 
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=600)

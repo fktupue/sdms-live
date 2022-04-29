@@ -40,7 +40,7 @@ searchField.addEventListener('keyup',(e)=>{
                                                 </div>
                                                 <div class="col-8 justify-content-center">
                                                     <h3>Address: ${item.address_line_1} ${item.address_line_2} ${item.city}, ${item.province}</h3>
-                                                    <h2>Distance: ${item.distance} | Rate Code: ${item.rate_code}</h2>
+                                                    <h2>Distance: ${item.distance}</h2>
                                                 </div>
                                             </div>
                                         </div>

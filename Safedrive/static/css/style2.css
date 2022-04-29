@@ -281,7 +281,7 @@ body {
     margin-top: 2.5rem;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(25px);
     z-index: -10;
@@ -296,7 +296,7 @@ body {
     margin-top: 2.5rem;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(25px);
 }
@@ -311,7 +311,7 @@ body {
     margin-top: 2.5rem;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(25px);
     overflow-y: scroll;
@@ -328,7 +328,7 @@ body {
     margin-top: 2.5rem;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(25px);
     overflow: hidden;
@@ -343,7 +343,7 @@ body {
     margin-top: 2.5rem;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(25px);
     overflow-y: scroll;
@@ -403,10 +403,10 @@ body::-webkit-scrollbar-thumb:hover,
     margin-top: 0.4rem;
     margin-bottom: 0.4rem;
 }
+
 body::-webkit-scrollbar-track{
-    background-color:#597d35;
+    background-color:#548235;
     backdrop-filter: blur(25px);
-    border-radius: 0px 20px 20px 0px;
 }
 
 .home_content .home-container-1 h1,
@@ -741,7 +741,7 @@ body::-webkit-scrollbar-track{
     width: 75%;
     min-height: 3rem;
     background: white;
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     border-radius: 25px;
     border: 2px solid;
     border-color: #3a5311;
@@ -819,7 +819,7 @@ body::-webkit-scrollbar-track{
     margin-top: 2rem;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(25px);
 }
@@ -925,7 +925,7 @@ body::-webkit-scrollbar-track{
     margin-top: 2rem;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(25px);
 }
@@ -1044,7 +1044,7 @@ body::-webkit-scrollbar-track{
     margin-top: 2.5rem;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(25px);
     overflow-y: scroll;
@@ -1062,7 +1062,7 @@ body::-webkit-scrollbar-track{
     margin-top: 2.5rem;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(25px);
     overflow-y: scroll;
@@ -1080,7 +1080,7 @@ body::-webkit-scrollbar-track{
     margin-top: 2.5rem;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(25px);
     overflow-y: scroll;
@@ -1229,12 +1229,9 @@ form .date_field{
 
 
 .submitForm {
-    width: 80%;
-    margin-top: 3rem;
-    margin-left: 4rem;
-    margin-bottom: 3rem;
+    width: 100%;
     height: 3rem;
-    border: 0.125rem solid;
+    border: 2px solid #597d35;
     background: white;
     border-radius: 25px;
     font-size: 1.125rem;
@@ -1281,8 +1278,24 @@ form .date_field{
     transition: 0.5s;
 }
 
+#cancel {
+    width: 100%;
+    height: 3rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid white;
+    border-radius: 25px;
+    backdrop-filter: blur(25px);
+    color: white;
+    cursor: pointer;
+    outline: none;
+    transition: 0.5s;
+}
+
 .btn-cont:hover,
-.btn-cont .cancelForm:hover {
+.btn-cont .cancelForm:hover,
+#cancel:hover {
     border-color: #3a5311;
     color: #3a5311;
     background: white;
@@ -1292,6 +1305,10 @@ form .form_field input[type=number]::-webkit-outer-spin-button,
 form .form_field input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator{
+    filter: invert(1);
 }
 
 .links-container {
@@ -1426,7 +1443,7 @@ form .form_field input[type=number]::-webkit-inner-spin-button {
     margin-top: 2.5rem;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(25px);
     overflow-y: scroll;
@@ -1501,7 +1518,7 @@ form .form_field input[type=number]::-webkit-inner-spin-button {
     margin-top: 2.5rem;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(25px);
     overflow-x: hidden;
@@ -1518,7 +1535,7 @@ form .form_field input[type=number]::-webkit-inner-spin-button {
     margin-top: 2.5rem;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(25px);
     overflow-x: hidden;
@@ -1708,7 +1725,6 @@ form .form_field input[type=number]::-webkit-inner-spin-button {
     cursor: pointer;
     outline: none;
     transition: 0.5s;
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
 }
 
 .new-btn,
@@ -1728,7 +1744,6 @@ form .form_field input[type=number]::-webkit-inner-spin-button {
     cursor: pointer;
     outline: none;
     transition: 0.5s;
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
 }
 
 .new-btn-driver {
@@ -1993,6 +2008,7 @@ form .form_field input[type=number]::-webkit-inner-spin-button {
     margin-top: 1rem;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(25px);
 }
@@ -2002,6 +2018,15 @@ form .form_field input[type=number]::-webkit-inner-spin-button {
     font-size: 1.1rem;
     font-weight: 600;
     padding: 1rem 1rem 1rem 1rem;
+}
+
+#col2-wrapper h6,
+#col3-wrapper h6 {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 7rem;
 }
 
 #comp-fin-col {
@@ -2053,6 +2078,7 @@ form .form_field input[type=number]::-webkit-inner-spin-button {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(25px);
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
 }
 
 #driver-fin h3 {
@@ -2127,9 +2153,10 @@ form .form_field input[type=number]::-webkit-inner-spin-button {
 
 #calendar-event-container{
     width: 100%;
+    height: 24rem;
+    padding-top: 1rem;
     overflow-x: hidden;
     overflow-y: scroll;
-    padding-top: 1rem;
 }
 
 #calendar-event-container::-webkit-scrollbar
@@ -2138,13 +2165,13 @@ form .form_field input[type=number]::-webkit-inner-spin-button {
 }
 
 #calendar-event-container::-webkit-scrollbar-thumb {
-    border-radius: 0px 40px 40px 0px;
+    border-radius: 40px 40px 40px 40px;
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(25px);
 }
 
 #calendar-event-container::-webkit-scrollbar-thumb:hover {
-    border-radius: 0px 40px 40px 0px;
+    border-radius: 40px 40px 40px 40px;
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(25px);
 }
@@ -2152,15 +2179,26 @@ form .form_field input[type=number]::-webkit-inner-spin-button {
 #calendar-event-container::-webkit-scrollbar-track{
     background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(25px);
-    border-radius: 0px 20px 20px 0px;
+    border-radius: 20px 20px 20px 20px;
     margin-top: 0.4rem;
     margin-bottom: 0.4rem;
+}
+
+#calendar-header{
+    padding-top: 2rem;
+    padding-left: 2rem;
+}
+
+#current-month-year h1{
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 #change-year{
     font-size: 1rem;
     font-weight: 600;
-    padding-top: 2.5rem;
+    padding-top: 0.3rem;
     display: flex;
     align-items: center;
     justify-content: end;
@@ -2168,72 +2206,151 @@ form .form_field input[type=number]::-webkit-inner-spin-button {
 
 #change-year-slider{
     color: white;
+    cursor: pointer;
 }
 
 #change-year-slider .fa:hover{
     font-size: 1.2rem;
 }
 
-#calendar-week, #calendar-day, #calendar-month{
-    list-style: none;
-    font-size: 0;
-}
-
-#calendar-week li, #calendar-day li, #calendar-month li {
-    display: inline-block;
-    text-align: center;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-#calendar-month li {
+#weekdays {
     width: 100%;
-    height: 2rem;
-    line-height: 2rem;
-    color: white;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+#weekdays div {
     font-size: 0.9rem;
     font-weight: 500;
+    color: white;
+    width: calc(100%/7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
-#calendar-month li.active {
-    font-weight: 600;
+#days {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 2rem;
 }
 
-#calendar-day li {
-    width: calc(100% / 7);
-    height: 3rem;
-    line-height: 3rem;
+#days div {
     font-size: 0.9rem;
-}
-
-#calendar-day li::after {
-    content: attr(data-day);
-    position: absolute;
-    width: 2rem;
-    height: 2rem;
-    line-height: 2rem;
+    font-weight: 400;
     color: white;
-    font-weight: 500
+    margin: 0.7rem 0;
+    width: calc(100%/7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
 }
 
-#calendar-day li:hover::after, #selected-day::after {
-    background: white;
-    color: #3a5311;
-    border-radius: 25px;
-    font-size: 600;
+#days div:hover:not(.today) {
+    font-weight: 700;
+    cursor: pointer;
 }
 
-#active-day::after {
+.prev-date,
+.next-date {
+    opacity: 0.5;
+}
+
+#days .today {
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.3);
+}
+
+#calendar-event-container h6 {
+    text-align: center;
+    margin-top: 10rem;
     color: white;
-}
-
-#calendar-week {
+    font-size: 0.9rem;
     font-weight: 600;
+}
+
+#calendar-item {
+    width: 96%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(25px);
+}
+
+#calendar-item h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
     color: white;
+}
+
+#calendar-item p {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: white;
+}
+
+#normal-action-cont {
+    width: 100%;
+    padding: 3rem 6rem;
+}
+
+#wide-action-cont {
+    width: 100%;
+    padding: 3rem 15rem;
+}
+
+#financial-change-year{
+    padding-right: 2rem;
     padding-top: 2rem;
-    font-size: 0.9rem;
 }
 
-#calendar-week li {
-    width: calc(100% / 7);
+#button-link {
+    text-decoration: none;
+}
+
+/* Alertifyjs */
+.alertify-notifier .ajs-message.ajs-success {
+    border-radius: 15px;
+    background: rgb(119, 221, 119) !important;
+    border: 1px solid white !important;
+    backdrop-filter: blur(25px) !important;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3) !important;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-shadow: none !important;
+    color: white !important;
+}
+
+.alertify-notifier .ajs-message.ajs-warning {
+    border-radius: 15px;
+    background: rgb(255,179,71) !important;
+    border: 1px solid white !important;
+    backdrop-filter: blur(25px) !important;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3) !important;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-shadow: none !important;
+    color: white !important;
+}
+
+.alertify-notifier .ajs-message.ajs-error {
+    border-radius: 15px;
+    background: #ff6961 !important;
+    border: 1px solid white !important;
+    backdrop-filter: blur(25px) !important;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3) !important;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-shadow: none !important;
+    color: white !important;
 }

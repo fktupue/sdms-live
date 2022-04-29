@@ -550,3 +550,73 @@ form .date-field input[type=date]{
     align-items: center;
     justify-content: center;
 }
+#reset-wrapper{
+    padding-top: 0.1rem;
+}
+#reset-password{
+    color: #548235;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.5s ease all;
+}
+#reset-password:hover{
+    text-align: end;
+    font-weight: 600;
+}
+#prev-date, #next-date{
+    font-size: 1.5rem;
+    color: #548235;
+    cursor: pointer;
+}
+#prev-date:hover, #next-date:hover{
+    font-size: 1.7rem;
+}
+#error-container{
+    padding: 2rem 5rem;
+}
+#error-container h6{
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #282828;
+}
+/* Alertifyjs */
+.alertify-notifier .ajs-message.ajs-success{
+    border-radius: 15px;
+    background: rgb(119, 221, 119) !important;
+    border: 1px solid white !important;
+    backdrop-filter: blur(25px) !important;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3) !important;
+    width: 15rem !important;
+    margin-top: 2.5rem !important;
+    font-size: 1rem;
+    font-weight: 600;
+    text-shadow: none !important;
+    color: white !important;
+}
+.alertify-notifier .ajs-message.ajs-warning{
+    border-radius: 15px;
+    background: rgb(255,179,71) !important;
+    border: 1px solid white !important;
+    backdrop-filter: blur(25px) !important;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3) !important;
+    width: 15rem !important;
+    margin-top: 2.5rem !important;
+    font-size: 1rem;
+    font-weight: 600;
+    text-shadow: none !important;
+    color: white !important;
+}
+.alertify-notifier .ajs-message.ajs-error{
+    border-radius: 15px;
+    background: #ff6961 !important;
+    border: 1px solid white !important;
+    backdrop-filter: blur(25px) !important;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3) !important;
+    width: 15rem !important;
+    margin-top: 2.5rem !important;
+    font-size: 1rem;
+    font-weight: 600;
+    text-shadow: none !important;
+    color: white !important;
+}

@@ -39,14 +39,21 @@ urlpatterns = [
     path('superuser-activitylog', views.superuser_activitylog, name='superuser-activitylog'),
     path('superuser-forgotpassword', views.superuser_forgotpassword, name='superuser-forgotpassword'),
 
+    #calendar
+    path('calendar', csrf_exempt(views.calendar), name='calendar'),
+
     #Management
     path('management-home/', views.management_home, name='management-home'),
     path('management-trips', views.management_trips, name='management-trips'),
     path('management-newtrip', views.management_newtrip, name='management-newtrip'),
     path('management-trips/trip<str:id>', views.management_viewtrip, name='management-viewtrip'),
     path('management-trips/generate-tripreport', views.generate_report, name='management-generatetripreport'),
-    path('financialreport-download/cl<str:id>', views.generate_financialreport, name='management-generatefinancialreport'),
+    path('financialreport-download/cl<str:id>-<int:trip_month>-<int:trip_year>', views.generate_financialreport, name='management-generatefinancialreport'),
     path('management-financialreport', views.management_financialreport, name='management-financialreport'),
+    path('totals-financial-data', csrf_exempt(views.totals_financial_report_data), name='totals-financial-data'),
+    path('client-financial-data', csrf_exempt(views.client_financial_report_data), name='client-financial-data'),
+    path('driver-financial-data', csrf_exempt(views.driver_financial_report_data), name='driver-financial-data'),
+    
 
     #Staff
     path('staff-home/', views.staff_home, name='staff-home'),

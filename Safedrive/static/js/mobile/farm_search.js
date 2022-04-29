@@ -34,7 +34,7 @@ searchField.addEventListener('keyup',(e)=>{
                                         <h3>${item.farm_name}</h3>
                                         <p>Account: ${item.company__company_name}</p>
                                         <p>Address: ${item.address_line_1} ${item.address_line_2} ${item.city} ${item.province} ${item.zip_code}</p>
-                                        <p>Distance: ${item.distance} | Rate Code: ${item.rate_code}</p>
+                                        <p>Distance: ${item.distance}</p>
                                     </div>
                                     <div class="col-3 justify-content-center" id="action-cont">
                                         <div class="view-item" id="superuser-view-item">

@@ -1,5 +1,6 @@
 {% extends 'staff_navbar.html' %}
-
+{% load humanize %}
+{% load mathfilters %}
 {% block content %}
 {% load static %}
 
@@ -10,11 +11,8 @@
             <div class="col-5 justify-content-center">
                 <h2 id="edittrip-details">Account: {{trip.farm.company}}</h2>
             </div>
-            <div class="col-5 justify-content-center">
+            <div class="col-7 justify-content-center">
                 <h4 id="farm-title">Farm: {{trip.farm}}</h4>
-            </div>
-            <div class="col-2 justify-content-center">
-                <h4 id="farm-title">Rate Code: {{trip.farm.rate_code}}</h4>
             </div>
         </div>
         <div class="row">
@@ -25,23 +23,23 @@
                 <h2 id="edittrip-details">Truck: {{trip.truck}}</h2>
             </div>
             <div class="col-4 justify-content-center">
-                <h2 id="edittrip-details">Driver: {{trip.truck.driver}} | Basic: {{trip.driver_basic}}</h2>
+                <h2 id="edittrip-details">Driver: {{trip.truck.driver}} | Basic: {{trip.driver_basic|floatformat:2|intcomma}}</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-4 justify-content-center">
-                <h2 id="edittrip-details">Helper 1: {{trip.helper_1}} | Basic: {{trip.helper1_basic}}</h2>
+                <h2 id="edittrip-details">Helper 1: {{trip.helper_1}} | Basic: {{trip.helper1_basic|floatformat:2|intcomma}}</h2>
             </div>
             <div class="col-4 justify-content-center">
-                <h2 id="edittrip-details">Helper 2: {{trip.helper_2}} | Basic: {{trip.helper2_basic}}</h2>
+                <h2 id="edittrip-details">Helper 2: {{trip.helper_2}} | Basic: {{trip.helper2_basic|floatformat:2|intcomma}}</h2>
             </div>
             <div class="col-4 justify-content-center">
-                <h2 id="edittrip-details">Helper 3: {{trip.helper_3}} | Basic: {{trip.helper3_basic}}</h2>
+                <h2 id="edittrip-details">Helper 3: {{trip.helper_3}} | Basic: {{trip.helper3_basic|floatformat:2|intcomma}}</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-4 justify-content-center">
-                <h2 id="edittrip-details">Bags Delivered: {{trip.bag_count}}</h2>
+                <h2 id="edittrip-details">Bilang ng Bag: {{trip.bag_count}}</h2>
             </div>
             <div class="col-4 justify-content-center">
                 <h2 id="edittrip-details">Bags over CAP: {{excess}}</h2>
@@ -55,7 +53,7 @@
         
         <div class="edit-form-cont" id="edit-form-cont">
             <div class="row">
-                <div class="col-4 justify-content-center">
+                <div class="col-6 justify-content-center">
                     <div class="select-box-form">
                         <div class="options-container">
                             {{ form.trip_status.errors }}
@@ -72,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4 justify-content-center">
+                <div class="col-6 justify-content-center">
                     <div class="select-box-form">
                         <div class="options-container-2">
                             {{ form.payment_status.errors }}
@@ -89,6 +87,16 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-4 justify-content-center">
+                    <div class="form_field">
+                        {{ form.bag_count.errors }}
+                        {{ form.bag_count }}
+                        <span></span>
+                        <label>Bilang ng Bag</label>
+                    </div>
+                </div>
                 <div class="col-4 justify-content-center">
                     <div class="form_field">
                         {{ form.driver_additional.errors }}
@@ -97,20 +105,34 @@
                         <label>Driver Additional</label>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-6 justify-content-center">
-                    <button type='submit' class= 'submitForm'> Save </button>
+                <div class="col-4 justify-content-center">
+                    <div class="form_field">
+                        {{ form.driver_additional_remarks.errors }}
+                        {{ form.driver_additional_remarks }}
+                        <span></span>
+                        <label>Remarks</label>
+                    </div>
                 </div>
-                <div class="col-6 justify-content-center">
-                    <div class="btn-cont">
-                        <a class="cancelForm" href="{% url 'SDMS:staff-trips' %}"> Cancel </a>
+            </div>
+            <div class="wide-action-cont" id="wide-action-cont">
+                <div class="row">
+                    <div class="col-6 justify-content-center">
+                        <button type='submit' class= 'submitForm'> Save </button>
+                    </div>
+                    <div class="col-6 justify-content-center">
+                        <button type='button' class= 'cancel' id="cancel" onclick="location.href='{% url 'SDMS:staff-trips' %}'"> Cancel </button>
                     </div>
                 </div>
             </div>
         </div>
     </form>
     <script src="{% static 'js/selected2.js' %}"></script>
+    <script>
+        {% for msg in messages %}
+        alertify.set('notifier','position', 'top-right');
+        alertify.warning('{{msg}}');
+        {% endfor %}
+    </script>
 </div>
 
 {% endblock %}

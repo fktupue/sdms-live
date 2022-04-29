@@ -31,7 +31,11 @@ class SignUpForm(UserCreationForm):
     username = forms.CharField(
         widget = forms.TextInput(
             attrs={
-                "class": "form-control"
+                #"class": "form-control",
+                'type':"text",
+                'id' : "username",
+                'name' : "username",
+                'maxlength' : "50"
             }
         )
     )
@@ -39,7 +43,12 @@ class SignUpForm(UserCreationForm):
     password1 = forms.CharField(
         widget = forms.PasswordInput(
             attrs={
-                "class": "form-control"
+                #"class": "form-control",
+                'type':"password",
+                'id' : "password1",
+                'name' : "password1",
+                'maxlength' : "50",
+                'minlength' : "8"
             }
         )
     )
@@ -47,15 +56,183 @@ class SignUpForm(UserCreationForm):
     password2 = forms.CharField(
         widget = forms.PasswordInput(
             attrs={
-                "class": "form-control"
+                #"class": "form-control",
+                'type':"password",
+                'id' : "password2",
+                'name' : "password2",
+                'maxlength' : "50",
+                'minlength' : "8"
             }
         )
     )
 
     class Meta:
         model = User
-        fields = ['username', 'password1', 'password2',]
+        fields = ['username', 'password1', 'password2']
+    
+    def __init__(self, *args, **kwargs):
+        super(SignUpForm,self).__init__(*args, **kwargs)
 
+class NewUserForm(forms.ModelForm):
+    first_name = forms.CharField(
+        widget = forms.TextInput(
+            attrs={
+                #"class": "form_field"
+                'type':"text",
+                'id' : "fname",
+                'name' : "first_name",
+                'maxlength' : "50"
+            }
+        )
+    )
+
+    middle_name = forms.CharField(
+        widget = forms.TextInput(
+            attrs={
+                #"class": "form_field"
+                'type':"text",
+                'id' : "mname",
+                'name' : "middle_name",
+                'maxlength' : "50"
+            }
+        )
+    )
+
+    last_name = forms.CharField(
+        widget = forms.TextInput(
+            attrs={
+                #"class": "form_field"
+                'type':"text",
+                'id' : "lname",
+                'name' : "last_name",
+                'maxlength' : "50"
+            }
+        )
+    )
+
+    contact_number = forms.CharField(
+        widget = forms.TextInput(
+            attrs={
+                #"class": "form_field"
+                'type':"text",
+                'id' : "contact_num",
+                'name' : "contact_number",
+                'maxlength' : "15"
+            }
+        )
+    )
+
+    email_address = forms.CharField(
+        widget = forms.TextInput(
+            attrs={
+                #"class": "form_field"
+                'type':"text",
+                'id' : "email_addrs",
+                'name' : "email_address",
+                'maxlength' : "50"
+            }
+        )
+    )
+    
+    profile_pic = forms.ImageField(
+        widget = forms.FileInput(
+            attrs={
+                'type':"file",
+                'id':"default-btn",
+                'name':"profile_picture",
+                'accept':".png,.jpg,.jpeg",
+                'hidden':'hidden'
+            }
+        )
+    )
+
+    class Meta:
+        model = User_Account
+        fields = ['first_name', 'middle_name', 'last_name', 'contact_number', 'email_address', 'profile_pic']
+
+    def __init__(self, *args, **kwargs):
+        super(NewUserForm,self).__init__(*args, **kwargs)
+
+class EditUserForm(forms.ModelForm):
+    first_name = forms.CharField(
+        widget = forms.TextInput(
+            attrs={
+                #"class": "form_field"
+                'type':"text",
+                'id' : "fname",
+                'name' : "first_name",
+                'maxlength' : "50"
+            }
+        )
+    )
+
+    middle_name = forms.CharField(
+        widget = forms.TextInput(
+            attrs={
+                #"class": "form_field"
+                'type':"text",
+                'id' : "mname",
+                'name' : "middle_name",
+                'maxlength' : "50"
+            }
+        )
+    )
+
+    last_name = forms.CharField(
+        widget = forms.TextInput(
+            attrs={
+                #"class": "form_field"
+                'type':"text",
+                'id' : "lname",
+                'name' : "last_name",
+                'maxlength' : "50"
+            }
+        )
+    )
+
+    contact_number = forms.CharField(
+        widget = forms.TextInput(
+            attrs={
+                #"class": "form_field"
+                'type':"text",
+                'id' : "contact_num",
+                'name' : "contact_number",
+                'maxlength' : "15"
+            }
+        )
+    )
+
+    email_address = forms.CharField(
+        widget = forms.TextInput(
+            attrs={
+                #"class": "form_field"
+                'type':"text",
+                'id' : "email_addrs",
+                'name' : "email_address",
+                'maxlength' : "50"
+            }
+        )
+    )
+    
+    profile_pic = forms.ImageField(
+        widget = forms.FileInput(
+            attrs={
+                'type':"file",
+                'id':"default-btn",
+                'name':"profile_picture",
+                'accept':".png,.jpg,.jpeg",
+                'hidden':'hidden'
+            }
+        )
+    )
+    
+
+    class Meta:
+        model = User_Account
+        fields = ['first_name', 'middle_name', 'last_name', 'contact_number', 'email_address', 'profile_pic']
+
+    def __init__(self, *args, **kwargs):
+        super(EditUserForm,self).__init__(*args, **kwargs)
 
 #Edit/Add Items
 
@@ -270,6 +447,143 @@ class NewFarmForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+class EditFarmForm(forms.ModelForm):
+    farm_name = forms.CharField(
+        widget = forms.TextInput(
+            attrs={
+                'type':"text",
+                'id' : "farm-name",
+                'name' : "farm-name",
+                'maxlength' : "50"
+            }
+        )
+    )
+
+    address_line_1 = forms.CharField(
+        widget = forms.TextInput(
+            attrs={
+                'type':"text",
+                'id' : "address-line-1",
+                'name' : "address_line_1",
+                'maxlength' : "60"
+            }
+        )
+    )
+
+    address_line_2 = forms.CharField(
+        widget = forms.TextInput(
+            attrs={
+                'type':"text",
+                'id' : "address-line-2",
+                'name' : "address-line-2",
+                'maxlength' : "60"
+            }
+        )
+    )
+
+    city = forms.CharField(
+        widget = forms.TextInput(
+            attrs={
+                'type':"text",
+                'id' : "city",
+                'name' : "city",
+                'maxlength' : "20"
+            }
+        )
+    )
+
+    province = forms.CharField(
+        widget = forms.TextInput(
+            attrs={
+                'type':"text",
+                'id' : "province",
+                'name' : "province",
+                'maxlength' : "20"
+            }
+        )
+    )
+
+    zip_code = forms.IntegerField(
+        widget = forms.NumberInput(
+            attrs={
+                'type':"number",
+                'id' : "zip-code",
+                'name' : "zip-code"
+            }
+        )
+    )
+
+    distance = forms.DecimalField(
+        widget = forms.NumberInput(
+            attrs={
+                'type':"number",
+                'id' : "distance",
+                'name' : "distance",
+                'step' : '0.1'
+            }
+        )
+    )
+
+    capacity = forms.DecimalField(
+        widget = forms.NumberInput(
+            attrs={
+                'type':"number",
+                'id' : "capacity",
+                'name' : "capacity",
+                'step' : '0.1'
+            }
+        )
+    )
+
+    company = forms.ModelChoiceField(queryset=Company.objects.all(), empty_label=None,
+        widget = forms.RadioSelect(
+            attrs={
+                'type' : "radio",
+                'class' : "radio",
+                'name' : "category"
+            }
+        ),
+    )
+
+    rate_code = forms.IntegerField(
+        widget = forms.NumberInput(
+            attrs={
+                'type' : "number",
+                'id' : "rate-code",
+                'name' : "rate-code"
+            }
+        )
+    )
+
+    billing_rate_override = forms.DecimalField(
+        widget = forms.NumberInput(
+            attrs={
+                'type':"number",
+                'id' : "rate-adjust",
+                'name' : "rate_adjust",
+                'step' : '0.01'
+            }
+        )
+    )
+
+    remarks = forms.CharField(
+        widget = forms.TextInput(
+            attrs={
+                'type':"text",
+                'id' : "remarks",
+                'name' : "remarks",
+                'maxlength' : "150"
+            }
+        )
+    )
+
+    class Meta:
+        model = Farm
+        fields = ['farm_name', 'address_line_1', 'address_line_2', 'city', 'province', 'zip_code', 'distance', 'capacity', 'company', 'rate_code', 'billing_rate_override', 'remarks']
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
 class NewTruckForm(forms.ModelForm):
     plate_number = forms.CharField(
         widget = forms.TextInput(
@@ -300,9 +614,16 @@ class NewTruckForm(forms.ModelForm):
         ),
     )
 
-    driver = User_Account.objects.filter(Q(user__groups__name__icontains="Driver")).select_related('user')
+    driv = User_Account.objects.filter(Q(user__groups__name__icontains="Driver", visible="SHOW")).select_related('user')
+    trucks = Truck.objects.filter(driver__in=driv)
+    ids = []
+    for d in trucks:
+        a = d.driver
+        b = a.id
+        ids.append(int(b))
+    available_drivers = User_Account.objects.exclude(Q(id__in=ids) | Q(user__groups__name="Admin") | Q(user__groups__name="Management") | Q(user__groups__name="Staff") | Q(visible="HIDE"))
 
-    driver = forms.ModelChoiceField(queryset=driver, empty_label=None,
+    driver = forms.ModelChoiceField(queryset=available_drivers, empty_label=None,
         widget = forms.RadioSelect(
             attrs={
                 'type' : "radio-2",
@@ -328,87 +649,6 @@ class NewTruckForm(forms.ModelForm):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
-class EditUserForm(forms.ModelForm):
-    first_name = forms.CharField(
-        widget = forms.TextInput(
-            attrs={
-                #"class": "form_field"
-                'type':"text",
-                'id' : "fname",
-                'name' : "first_name",
-                'maxlength' : "50"
-            }
-        )
-    )
-
-    middle_name = forms.CharField(
-        widget = forms.TextInput(
-            attrs={
-                #"class": "form_field"
-                'type':"text",
-                'id' : "mname",
-                'name' : "middle_name",
-                'maxlength' : "50"
-            }
-        )
-    )
-
-    last_name = forms.CharField(
-        widget = forms.TextInput(
-            attrs={
-                #"class": "form_field"
-                'type':"text",
-                'id' : "lname",
-                'name' : "last_name",
-                'maxlength' : "50"
-            }
-        )
-    )
-
-    contact_number = forms.CharField(
-        widget = forms.TextInput(
-            attrs={
-                #"class": "form_field"
-                'type':"text",
-                'id' : "contact_num",
-                'name' : "contact_number",
-                'maxlength' : "15"
-            }
-        )
-    )
-
-    email_address = forms.CharField(
-        widget = forms.TextInput(
-            attrs={
-                #"class": "form_field"
-                'type':"text",
-                'id' : "email_addrs",
-                'name' : "email_address",
-                'maxlength' : "50"
-            }
-        )
-    )
-    
-    profile_pic = forms.ImageField(
-        widget = forms.FileInput(
-            attrs={
-                'type':"file",
-                'id':"default-btn",
-                'name':"profile_picture",
-                'accept':".png,.jpg,.jpeg",
-                'hidden':'hidden'
-            }
-        )
-    )
-    
-
-    class Meta:
-        model = User_Account
-        fields = ['first_name', 'middle_name', 'last_name', 'contact_number', 'email_address', 'profile_pic']
-
-    def __init__(self, *args, **kwargs):
-        super(EditUserForm,self).__init__(*args, **kwargs)
 
 class NewTrip(forms.ModelForm):
     get_farms = Farm.objects.all()
@@ -501,6 +741,16 @@ class NewTrip(forms.ModelForm):
         # self.fields['helper_3'].required = False
 
 class EditTrip_management(forms.ModelForm):
+    bag_count = forms.IntegerField(
+        widget = forms.NumberInput(
+            attrs={
+                'type' : "number",
+                'id' : "bag-count",
+                'name' : "bag-count"
+            }
+        )
+    )
+    
     rate_adjustment = forms.DecimalField(
         widget = forms.NumberInput(
             attrs={
@@ -526,14 +776,15 @@ class EditTrip_management(forms.ModelForm):
 
     class Meta:
         model = Trips
-        fields = ['rate_adjustment', 'management_remarks']
+        fields = ['bag_count', 'rate_adjustment', 'management_remarks']
 
     def __init__(self, *args, **kwargs):
         super(EditTrip_management,self).__init__(*args, **kwargs)
 
 class EditTrip_staff(forms.ModelForm):
     tripstatus = [
-        ('IN PROGRESS', 'IN PROGRESS')
+        ('IN PROGRESS', 'IN PROGRESS'),
+        ('DELIVERED', 'DELIVERED')
     ]
 
     paystatus = [
@@ -560,6 +811,16 @@ class EditTrip_staff(forms.ModelForm):
         ),
     )
 
+    bag_count = forms.IntegerField(
+        widget = forms.NumberInput(
+            attrs={
+                'type' : "number",
+                'id' : "bag-count",
+                'name' : "bag-count"
+            }
+        )
+    )
+
     driver_additional = forms.DecimalField(
         widget = forms.NumberInput(
             attrs={
@@ -571,9 +832,21 @@ class EditTrip_staff(forms.ModelForm):
         )
     )
 
+    driver_additional_remarks = forms.CharField(
+        widget = forms.TextInput(
+            attrs={
+                #"class": "form_field"
+                'type':"text",
+                'id' : "management-remarks",
+                'name' : "management_remarks",
+                'maxlength' : "100"
+            }
+        )
+    )
+
     class Meta:
         model = Trips
-        fields = ['trip_status', 'payment_status', 'driver_additional']
+        fields = ['trip_status', 'payment_status', 'bag_count', 'driver_additional', 'driver_additional_remarks']
 
     def __init__(self, *args, **kwargs):
         super(EditTrip_staff,self).__init__(*args, **kwargs)
@@ -595,6 +868,16 @@ class EditTrip_driver(forms.ModelForm):
         ),
     )
 
+    bag_count = forms.IntegerField(
+        widget = forms.NumberInput(
+            attrs={
+                'type' : "number",
+                'id' : "bag-count",
+                'name' : "bag-count"
+            }
+        )
+    )
+
     additional_expense = forms.DecimalField(
         widget = forms.NumberInput(
             attrs={
@@ -606,9 +889,21 @@ class EditTrip_driver(forms.ModelForm):
         )
     )
 
+    additional_expense_remark = forms.CharField(
+        widget = forms.TextInput(
+            attrs={
+                #"class": "form_field"
+                'type':"text",
+                'id' : "management-remarks",
+                'name' : "management_remarks",
+                'maxlength' : "100"
+            }
+        )
+    )
+
     class Meta:
         model = Trips
-        fields = ['trip_status', 'additional_expense']
+        fields = ['trip_status', 'bag_count', 'additional_expense', 'additional_expense_remark']
 
     def __init__(self, *args, **kwargs):
         super(EditTrip_driver,self).__init__(*args, **kwargs)

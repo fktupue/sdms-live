@@ -20,9 +20,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('108fg67ew3zs2lhy6523/', admin.site.urls),
     path('', include('SDMS.urls')),
-    path("api-drf/", include("rest_framework.urls"))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

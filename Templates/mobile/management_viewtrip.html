@@ -20,6 +20,12 @@
                 {% csrf_token %}
                 {{ form.non_field_errors }}
                 <div class="form-field" id="form-field">
+                    {{ form.bag_count.errors }}
+                    {{ form.bag_count }}
+                    <span></span>
+                    <label>Bag Count</label>
+                </div>
+                <div class="form-field" id="form-field">
                     {{ form.rate_adjustment.errors }}
                     {{ form.rate_adjustment }}
                     <span></span>
@@ -38,5 +44,11 @@
         </div>
     </div>
     <script type="text/javascript" src="{% static 'js/main2.js' %}"></script>
+    <script>
+        {% for msg in messages %}
+        alertify.set('notifier','position', 'top-center');
+        alertify.warning('{{msg}}');
+        {% endfor %}
+    </script>
 </div>
 {% endblock %}

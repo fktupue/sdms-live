@@ -119,5 +119,11 @@
         </div>
         <script src="{% static 'js/main.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/driver_trip_search.js' %}"></script>
+        <script>
+            {% for msg in messages %}
+            alertify.set('notifier','position', 'top-right');
+            alertify.success('{{msg}}');
+            {% endfor %}
+        </script>
     </body>
 </html>
