@@ -27,8 +27,8 @@ SECRET_KEY = '7e-co=0%%dcf5mw4sqrh-cjk1doanfw4e@povwb^-$$(vy*ut8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['sdms-app-development.herokuapp.com', '127.0.0.1', 'localhost']
-#ALLOWED_HOSTS = ['safedrive-sdms.herokuapp.com', '127.0.0.1', 'localhost']
+#ALLOWED_HOSTS = ['sdms-app-development.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['safedrive-sdms.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
