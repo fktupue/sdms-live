@@ -409,7 +409,7 @@ class NewFarmForm(forms.ModelForm):
         )
     )
 
-    company = forms.ModelChoiceField(queryset=Company.objects.all(), empty_label=None,
+    company = forms.ModelChoiceField(queryset=Company.objects.filter(visible="SHOW"), empty_label=None,
         widget = forms.RadioSelect(
             attrs={
                 'type' : "radio",
@@ -535,7 +535,7 @@ class EditFarmForm(forms.ModelForm):
         )
     )
 
-    company = forms.ModelChoiceField(queryset=Company.objects.all(), empty_label=None,
+    company = forms.ModelChoiceField(queryset=Company.objects.filter(visible="SHOW"), empty_label=None,
         widget = forms.RadioSelect(
             attrs={
                 'type' : "radio",
@@ -633,7 +633,7 @@ class NewTruckForm(forms.ModelForm):
         ),
     )
 
-    company = forms.ModelChoiceField(queryset=Company.objects.all(), empty_label=None,
+    company = forms.ModelChoiceField(queryset=Company.objects.filter(visible="SHOW"), empty_label=None,
         widget = forms.RadioSelect(
             attrs={
                 'type' : "radio-3",
@@ -651,8 +651,8 @@ class NewTruckForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
 class NewTrip(forms.ModelForm):
-    get_farms = Farm.objects.all()
-    get_trucks = Truck.objects.all()
+    get_farms = Farm.objects.filter(visible="SHOW")
+    get_trucks = Truck.objects.filter(visible="SHOW")
 
     farm = forms.ModelChoiceField(queryset=get_farms, empty_label=None,
         widget = forms.RadioSelect(
@@ -910,7 +910,7 @@ class EditTrip_driver(forms.ModelForm):
         self.fields['trip_status'].required = False
 
 class NewTrip_driver(forms.ModelForm):
-    get_farms = Farm.objects.all()
+    get_farms = Farm.objects.filter(visible="SHOW")
 
     farm = forms.ModelChoiceField(queryset=get_farms, empty_label=None,
         widget = forms.RadioSelect(
